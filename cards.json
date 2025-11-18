@@ -41,6 +41,12 @@
             "title": "Curse of the Right Turn",
             "description": "For the next [S 20] [M 40] [L 60] minutes, the seekers can only turn right at any street intersection. If, at any point, they find themselves in a dead end where they cannot continue forward or turn right for another 1,000 feet, they may do a full 180. A right turn is defined as a road at any angle that veers to the right of the seekers.",
             "castingCost": "Discard a card."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Gambler's Feet",
+            "description": "For the next [S 20] [M 40] [L 60] minutes, seekers must roll a die before they take any steps in any direction. They may take that many steps before rolling again.",
+            "castingCost": "Roll a die, if it's an even number, this curse has no effect."
         }
     ]
 }
