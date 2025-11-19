@@ -1,0 +1,132 @@
+{
+    "questionCategories": [
+        {
+            "category": "matching",
+            "format": "Is your nearest _____ the same as my _____?",
+            "cost": "Draw 2, Keep 1",
+            "timeLimit": 5,
+            "questions": [
+                "Commercial Airport",
+                "Transit Line",
+                "Station's Name Length",
+                "Street or Path",
+                "1st Administrative Division",
+                "2nd Administrative Division",
+                "3rd Administrative Division",
+                "4th Administrative Division",
+                "Mountain",
+                "Landmass",
+                "Park",
+                "Amusement Park",
+                "Zoo",
+                "Aquarium",
+                "Golf Course",
+                "Museum",
+                "Movie Theater",
+                "Hospital",
+                "Library",
+                "Foreign Consulate"
+            ]
+        },
+        {
+            "category": "measuring",
+            "format": "Compared to me, are you closer to or further from _____?",
+            "cost": "Draw 3, Keep 1",
+            "timeLimit": 5,
+            "questions": [
+                "Commercial Airport",
+                "High-Speed Train Line",
+                "Rail Station",
+                "International Border",
+                "1st Administrative Division Border",
+                "2nd Administrative Division Border",
+                "Sea Level",
+                "Body of Water",
+                "Coastline",
+                "Mountain",
+                "Park",
+                "Amusement Park",
+                "Zoo",
+                "Aquarium",
+                "Golf Course",
+                "Museum",
+                "Movie Theater",
+                "Hospital",
+                "Library",
+                "Foreign Consulate"
+            ]
+        },
+        {
+            "category": "rader",
+            "format": "Are you within _____ of me?",
+            "cost": "Draw 2, Keep 1",
+            "timeLimit": 5,
+            "questions": [
+                "500 m",
+                "1 km",
+                "2 km",
+                "5 km",
+                "10 km",
+                "15 km",
+                "40 km",
+                "80 km",
+                "160 km",
+                "Choose (Custom Distance)"
+            ]
+        },
+        {
+            "category": "thermometer",
+            "format": "After traveling _____, am I hotter or colder?",
+            "cost": "Draw 2, Keep 1",
+            "timeLimit": 5,
+            "questions": [
+                "1 km",
+                "5 km",
+                "15 km",
+                "75 km"
+            ]
+        },
+        {
+            "category": "photo",
+            "format": "Send me a photo of _____.",
+            "cost": "Draw & Keep 1",
+            "timeLimit": 10,
+            "questions": [
+                "Any Building Visible from Transit Station",
+                "Widest Street",
+                "Tree",
+                "Tallest Structure in Your Current Sightline",
+                "You",
+                "The Sky",
+                "Tallest Building Visible from Transit Station",
+                "Trace Nearest Street/Path",
+                "2 Buildings",
+                "Restaurant Interior",
+                "Park",
+                "Grocery Store Aisle",
+                "Place of Worship",
+                "Train Platform",
+                "1km of Streets Traced",
+                "Tallest Mountain Visible from Transit Station",
+                "The Biggest Body of Water in Your Zone",
+                "5 Buildings"
+            ]
+        },
+        {
+            "category": "tentacles",
+            "format": "Within _____ km of me, which _____ are you closest to? (You must also be within _____)",
+            "cost": "Draw 4, Keep 2",
+            "timeLimit": 5,
+            "questions": [
+                "Museums Within 2 km",
+                "Libraries Within 2 km",
+                "Movie Theaters Within 2 km",
+                "Hospitals Within 2 km",
+                "Metro Lines Within 25 km",
+                "Zoos Within 25 km",
+                "Aquariums Within 25 km",
+                "Amusement Parks Within 25 km"
+            ]
+        }
+    ]
+}
