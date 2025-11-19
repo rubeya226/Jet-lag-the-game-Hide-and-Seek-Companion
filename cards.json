@@ -137,6 +137,90 @@
             "title": "Curse of the Bird Guide",
             "description": "You have one chance to film a bird for as long as possible, up to [S 10] [M 10] [L 15] minutes straight. If, at any point, the bird leaves the frame, your timer is stopped. The seekers must then film a bird for the same amount of time or longer before asking another question.",
             "castingCost": "Film a bird."
+        },
+        {
+            "type": "powerup",
+            "title": "Veto Question",
+            "description": "Play instead of answering a question. No answer is given, and no reward is earned.",
+            "imgURL": "/card_images/veto.png",
+            "numInDeck": "4"
+        },
+        {
+            "type": "timebonus",
+            "title": "Time Bonus (Small)",
+            "description": "[S 2] [M 3] [L 5]",
+            "imgURL": "/card_images/timebonus_small.png",
+            "numInDeck": "25"
+        },
+        {
+            "type": "timebonus",
+            "title": "Time Bonus (Medium-High)",
+            "description": "[S 8] [M 12] [L 20]",
+            "imgURL": "/card_images/timebonus_medium-high.png",
+            "numInDeck": "3"
+        },
+        {
+            "type": "powerup",
+            "title": "Draw 1, Expand 1",
+            "description": "Draw one card from the hider deck. For the rest of the round, you can hold one additional card in your hand.",
+            "imgURL": "/card_images/expand_hand.png",
+            "numInDeck": "2"
+        },
+        {
+            "type": "timebonus",
+            "title": "Time Bonus (Medium-Low)",
+            "description": "[S 4] [M 6] [L 10]",
+            "imgURL": "/card_images/timebonus_medium-low.png",
+            "numInDeck": "15"
+        },
+        {
+            "type": "powerup",
+            "title": "Duplicate Another Card",
+            "description": "Play this card as a copy of any other card in your hand. This may be used to duplicate a time bonus at the end of your round.",
+            "imgURL": "/card_images/duplicate.png",
+            "numInDeck": "2"
+        },
+        {
+            "type": "timebonus",
+            "title": "Time Bonus (Medium)",
+            "description": "[S 6] [M 9] [L 15]",
+            "castingCost": "/card_images/timebonus_medium.png",
+            "numInDeck": "10"
+        },
+        {
+            "type": "timebonus",
+            "title": "Time Bonus (Large)",
+            "description": "[S 12] [M 18] [L 30]",
+            "castingCost": "/card_images/timebonus_large.png",
+            "numInDeck": "2"
+        },
+        {
+            "type": "powerup",
+            "title": "Move",
+            "description": "Discard your hand and send the hiders the location of your transit station. This card grants a [S 10] [M 20] [L 60] minute period to establish a new hiding zone somewhere else on the game map. The seekers are frozen and your hiding timer is paused until this new hiding period has concluded. This card cannot be played during the endgame.",
+            "imgURL": "/card_images/move.png",
+            "numInDeck": "1"
+        },
+        {
+            "type": "powerup",
+            "title": "Discard 2, Draw 3",
+            "description": "Discard two other cards from your hand. Then, draw and keep three cards from the hider deck.",
+            "imgURL": "/card_images/discard_two_draw_three.png",
+            "numInDeck": "3"
+        },
+        {
+            "type": "powerup",
+            "title": "Discard 1, Draw 2",
+            "description": "Discard one other card from your hand. Then, draw and keep two cards from the hider deck.",
+            "imgURL": "/card_images/discard_one_draw_two.png",
+            "numInDeck": "4"
+        },
+        {
+            "type": "powerup",
+            "title": "Randomize Question",
+            "description": "Play instead of answering a question. A new unasked question from the same category is chosen, at random, which you answer instead.",
+            "imgURL": "/card_images/randomize.png",
+            "numInDeck": "4"
         }
     ]
 }
