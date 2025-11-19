@@ -47,6 +47,96 @@
             "title": "Curse of the Gambler's Feet",
             "description": "For the next [S 20] [M 40] [L 60] minutes, seekers must roll a die before they take any steps in any direction. They may take that many steps before rolling again.",
             "castingCost": "Roll a die, if it's an even number, this curse has no effect."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Distant Cuisine",
+            "description": "Find a restaurant within your zone that explicitly serves food from a specific foreign country. The seekers must vist a restaurant serving food from a country that is an equal or greater distance away before asking another question.",
+            "castingCost": "You must be at the restaurant."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Bridge Troll",
+            "description": "The seekers much ask their next question from under a bridge.",
+            "castingCost": "Seekers must be at least [S 2] [M 10] [L 50] km away from you."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Lemon Phylactery",
+            "description": "Before asking another question, the seekers must each find a lemon and affix it to the outermost layer of their clothes or skin. If, at any point, one of these lemons is no longer touching a seeker, you are awarded an extra [S 30] [M 45] [L 60] minutes. This curse cannot be played during the endgame.",
+            "castingCost": "Discard a powerup."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Urban Explorer",
+            "description": "For the rest of your run, seekers cannot ask questions when they are on transit or in a transit station.",
+            "castingCost": "Discard 2 cards."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Jammed Door",
+            "description": "For the next [S 0.5] [M 1] [L 3] hours, whenever the seekers want to pass through a doorway into a building, business, train, or other vehicle, they must first roll 2 dice. If they do not roll a 7 or higher, they cannot enter that space (including through other doorways). Any given doorway can be re-attempted after [S 5] [M 10] [L 15] minutes.",
+            "castingCost": "Discard two cards."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Endless Tumble",
+            "description": "Seekers must roll a die at least 30 meters and have it land on a 5 or a 6 before they can ask another question. The die must roll the full distance, unaided, using only the momentum from the original throw and gravity to travel the 30 meters. If the seekers accidentally hit someone with a die, you are awarded a [S 10] [M 20] [L 30] minute bonus.",
+            "castingCost": "Roll a die. If it's a 5 or a 6, this card has no effect."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Labyrinth",
+            "description": "Spend up to [S 10] [M 20] [L 30] minutes drawing a solvable maze and send a photo of it to the seekers. You cannot use the internet to research maze designs. The seekers must solve the maze before asking anotherquestion.",
+            "castingCost": "Draw a maze."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Spotty Memory",
+            "description": "For the rest of your run, one random category of questions will be disabled at all times. After this curse is played, seekers must roll a die to determine the category of questions to be disabled. This category remains disabled until the next question is asked, at which point a die is rolled again to choose a new category. The same category can be disabled multiple times in a row.",
+            "castingCost": "Discard a time bonus."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the U-turn",
+            "description": "The seekers must disembark their current mode of transportation at that next station (as long as that station is serviced by another form of transit in the next [S 0.5] [M 0.5] [L 1] hours.",
+            "castingCost": "Seekers must be heading the wrong way. (Their next station is further from you than they are.)"
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Luxury Car",
+            "description": "Take a photo of a car. The seekers must take a photo of a more expensive car before asking another question.",
+            "castingCost": "A photo of a car."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Unguided Tourist",
+            "description": "Send the seekers an unzoomed Google Street View image from a street within 150 meters of where they are now. The shot has to be parallel to the horizon and include at least one human-built structure other than a road. Without using the internet for research, they must find what you sent them in real life before they can use transportation or ask another question. They must send a picture to the hider for verification.",
+            "castingCost": "Seekers must be outside."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Zoologist",
+            "description": "Take a photo of a wild fish, bird, mammal, reptile, amphibian, or bug. The seekers must take a picture of a wild animal in the same category before asking another question.",
+            "castingCost": "A photo of an animal."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Ransom Note",
+            "description": "The next question that the seekers ask must be composed of words and letters cut out of any printed material. The question must be coherent and include at least 5 words.",
+            "castingCost": "Spell out \"random note\" as a ransome note (without using this card)."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of Water Weight",
+            "description": "The seekers must acquire and carry at least 2 liters of liquid per seeker for the rest of their run. They cannot ask another question until they have acquired the liquid. The water may be distributed between the seekers as they see fit. If the liquid is lost or abandoned at any point after the acquisition, the hider is awarded a [S 30] [M 30] [L 60] minute bonus.",
+            "castingCost": "Seekers must be within 300 meters of a body of water."
+        },
+        {
+            "type": "curse",
+            "title": "Curse of the Bird Guide",
+            "description": "You have one chance to film a bird for as long as possible, up to [S 10] [M 10] [L 15] minutes straight. If, at any point, the bird leaves the frame, your timer is stopped. The seekers must then film a bird for the same amount of time or longer before asking another question.",
+            "castingCost": "Film a bird."
         }
     ]
 }
