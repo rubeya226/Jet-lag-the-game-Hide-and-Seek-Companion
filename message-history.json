@@ -1,0 +1,24 @@
+{
+    "messages": [
+        {
+            "sender": "hider",
+            "content": "You can't find me!"
+        },
+        {
+            "sender": "seeker",
+            "content": "bro I can see you rn"
+        },
+        {
+            "sender": "hider",
+            "content": "nuh uh"
+        },
+        {
+            "sender": "hider",
+            "content": "oh"
+        },
+        {
+            "sender": "seeker",
+            "content": "told you"
+        }
+    ]
+}
