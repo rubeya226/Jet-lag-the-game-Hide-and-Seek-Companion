@@ -19,6 +19,10 @@
         {
             "sender": "seeker",
             "content": "told you"
+        },
+        {
+            "sender": "hider",
+            "content": "imma curse you rq"
         }
     ]
 }
