@@ -14,10 +14,12 @@ async function getMessageChange(){
     
 }
 
-async function messageChangeTemp(){
+async function updateMessages(){
     if(await getMessageChange()){
-        console.log("aye sir");
-    }else{
-        console.log("no sir");
+        //getMessages()
+        //getOldMessages()
+        //for(let i = oldMssgs.length; i < mssgs.length; i++){
+        //  createMessage(mssgs[i]);
+        //}
     }
 }
