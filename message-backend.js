@@ -19,10 +19,15 @@ function getMessageCount(){
 }
 
 app.get("/message-change", function (req, res, next){
-    console.log("== /message-change");
+    console.log("== GET /message-change");
     let mssgNum = getMessageCount();
     console.log("  -- count = " + mssgNum);
     res.status(200).json({count: mssgNum});
+});
+
+app.get("/messages", function (req, res, next){
+    console.log("== GET /messages");
+    res.status(200).sendFile(__dirname + "/message-history.json");
 });
 
 app.listen(port, function (){
