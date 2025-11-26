@@ -1,0 +1,196 @@
+/* basic page setup so the phone is centered*/
+body {
+    background-color: black;
+    height: 100vh;
+    margin: 0;
+    display: flex;              /* makes centering way easier */
+    justify-content: center;    /* centers the frame left→right */
+    align-items: center;        /* centers the frame top→bottom */
+}
+
+/* hiding class */
+.hidden {
+    display: none !important;
+}
+
+
+/* the actual phone-shaped frame */
+.phone-frame {
+    padding: 20px;
+    width: 390px;
+    height: 90%;
+    background: #fceec5;
+    border: 10px solid black;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;              /* stack all screens + chat vertically */
+    flex-direction: column;     /* everything inside goes in a top-to-bottom column */
+}
+
+
+/* title on home screen */
+.title {
+    font-weight: 700;
+    text-align: center;
+    font-size: 40px;
+    color: #b91e0a;
+}
+
+
+/* home screen layout stuff */
+#home-screen {
+    display: flex;              /* layout the title + buttons nicely */
+    flex-direction: column;     /* stack buttons downward */
+    justify-content: center;    /* keeps everything centered vertically */
+    align-items: center;        /* keeps everything centered horizontally */
+    text-align: center;
+}
+
+
+/* buttons for home */
+.home-btn {
+    width: 90%;
+    font-size: 30px;
+    margin: 15px;
+    border-radius: 10px;
+    font-weight: 200;
+    color: white;
+}
+
+
+/* button colors */
+#rules-btn      { background-color: #FFD300 !important; }
+#start-hide-btn { background-color: #FF7A00 !important; }
+#start-seek-btn { background-color: #FF2E00 !important; }
+
+
+/* hover, makes buttons pop a bit */
+#rules-btn:hover,
+.home-btn.hider:hover,
+.home-btn.seeker:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+/* leaderboard box */
+#records-section {
+    margin-top: 30px;
+    padding: 5px;
+    background: #fff5d1;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid rgb(245, 178, 178);
+    color: #b91e0a;
+}
+
+#records-list { text-align: left; }
+
+
+/* different placements on leaderboard */
+.first-place,
+.second-place,
+.third-place {
+    border: .0001px solid gray;
+    border-radius: 5px;
+    padding: 2px 5px;
+    background: #fceec5;
+    margin: 2px;
+}
+
+.first-place  { color: #b91e0a; }
+.second-place { color: rgb(255, 100, 16); }
+.third-place  { color: #dfc506; }
+
+
+/* logo */
+#jetlag-logo {
+    width: 140px;
+    max-width: 70%;
+    display: block;             /* lets margin auto actually work */
+    margin: 40px auto;          /* auto left/right = centers it horizontally */
+    align-self: center;         /* centers itself in the flex container */
+    border-radius: 50%;
+}
+
+
+/* chat header (just centers the title) */
+.top-bar {
+    text-align: center;
+}
+
+
+/* area where the messages go */
+#chat-container {
+    flex: 1;                    /* takes up all the extra space above input bar */
+    padding: 12px;
+    overflow-y: auto;           /* lets the messages scroll */
+    display: flex;              /* needed to stack messages nicely */
+    flex-direction: column;     /* messages appear in a vertical list */
+    gap: 12px;                  /* little spacing between each message bubble */
+}
+
+
+/* general message bubble */
+.message {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    line-height: 1.3;
+    font-size: 17px;
+    word-wrap: break-word;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+
+/* seeker msg on left */
+.message.seeker {
+    align-self: flex-start;     /* pushes this bubble to the left side */
+    background: #e5e5ea;
+    color: black;
+    margin-left: 8px;
+    border-bottom-left-radius: 4px;
+}
+
+
+/* hider msg on right */
+.message.hider {
+    align-self: flex-end;       /* pushes this bubble to the right side */
+    background: #ff7a00;
+    color: white;
+    margin-right: 8px;
+    border-bottom-right-radius: 4px;
+}
+
+
+/* tiny timestamps */
+.message .time {
+    display: block;
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 4px;
+    text-align: right;
+}
+
+
+/* send button hover */
+#send-btn:hover {
+    cursor: pointer;
+}
+
+
+/* bottom input bar */
+#input-area {
+    display: flex;              /* lays input + send button side-by-side */
+    align-items: center;        /* keeps them lined up nicely vertically */
+    padding: 12px;
+    gap: 10px;                  /* space between input + button */
+    background: #fceec5;
+}
+
+
+/* make the input actually stretch */
+#guess-input {
+    flex: 1;                    /* takes up all available width */
+}
