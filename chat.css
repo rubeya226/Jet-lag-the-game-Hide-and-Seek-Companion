@@ -1,0 +1,23 @@
+.message{
+    border: 2px solid #dedede;
+    background-color: rgb(242, 242, 242);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.message.hider{
+    background-color: rgb(242, 100, 200);
+}
+
+.message.seeker{
+    background-color: rgb(242, 200, 100);
+}
+
+.message.self{
+    text-align:right;
+}
+
+.message.opp{
+    text-align:left;
+}
