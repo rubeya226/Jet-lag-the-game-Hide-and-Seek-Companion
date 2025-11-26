@@ -8,30 +8,9 @@ let messageAmount;
 
 let app = express();
 
-/*
- * Whitelist origins code from user "eyecatchUp" on stackoverflow
- * https://stackoverflow.com/questions/1653308/access-control-allow-origin-multiple-origin-domains
- */
-const corsWhitelist = new Set([
-    "https://flip1.engr.oregonstate.edu",
-    "https://flip2.engr.oregonstate.edu",
-    "https://flip3.engr.oregonstate.edu",
-    "https://flip4.engr.oregonstate.edu"
-]);
-
-app.use((req, res, next) => {
-    if (corsWhitelist.has(req.headers.origin)) {
-        res.set({
-            'Access-Control-Allow-Origin', req.headers.origin,
-            'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'
-        });
-    }
-    next();
-});
-
-/*
- * End Whitelist origins code
- */
+app.use(cors({
+  origin: '*'
+}));
 
 function getMessageCount(){
     const mssgs = fs.readFileSync(__dirname + "/message-history.json");
