@@ -10,7 +10,6 @@ async function getMessageChange(){
     if(mssgCount > localMssgCount){
         return true;
     }else{
-        console.log("err");
         return false;
     }
     
@@ -54,6 +53,10 @@ function createMessage(role, container, message){
     container.appendChild(newMssg);
 }
 
+function temp(){
+    updateMessages("hider");
+}
+
 async function updateMessages(role){
     if(await getMessageChange()){
         let mssgs = await getMessages();
@@ -64,4 +67,6 @@ async function updateMessages(role){
             createMessage(role, container, mssgs[i]);
         }
     }
+
+    setTimeout(temp, 500);
 }
