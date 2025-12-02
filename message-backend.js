@@ -12,22 +12,38 @@ app.use(cors({
   origin: '*'
 }));
 
+app.use(express.json());
+
+function getMessages(){
+    return JSON.parse(fs.readFileSync(__dirname + "/message-history.json"));
+}
+
 function getMessageCount(){
-    const mssgs = fs.readFileSync(__dirname + "/message-history.json");
-    const messageObj = JSON.parse(mssgs);
-    return messageObj.messages.length;
+    const mssgs = getMessages();
+    return mssgs.messages.length;
 }
 
 app.get("/message-change", function (req, res, next){
-    console.log("== GET /message-change");
+    //console.log("== GET /message-change");
     let mssgNum = getMessageCount();
-    console.log("  -- count = " + mssgNum);
+    //console.log("  -- count = " + mssgNum);
     res.status(200).json({count: mssgNum});
 });
 
 app.get("/messages", function (req, res, next){
     console.log("== GET /messages");
     res.status(200).sendFile(__dirname + "/message-history.json");
+});
+
+app.post("/new-message", function (req, res){
+    console.log("== POST /new-message");
+    let mssgs = getMessages();
+    mssgs.messages.push(req.body);
+    fs.writeFileSync(
+        "./message-history.json",
+        JSON.stringify(mssgs, null, 2)
+    );
+    res.status(200).send("Message Recieved.");
 });
 
 app.listen(port, function (){

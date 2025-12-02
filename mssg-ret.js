@@ -1,4 +1,10 @@
-const flipNum = 4;
+const flipNum = 3;
+
+/*
+ *******************************************************************************
+ Retrieving Messages
+ *******************************************************************************
+ */
 
 async function getMessageChange(){
     let localMssgCount = document.getElementsByClassName("message").length;
@@ -69,4 +75,42 @@ async function updateMessages(role){
     }
 
     setTimeout(temp, 500);
+}
+
+/*
+ *******************************************************************************
+ Sending Messages
+ *******************************************************************************
+ */
+const input = document.getElementById("input");
+const send_button = document.getElementById("send-button");
+const filePath = "http://flip" + flipNum + ".engr.oregonstate.edu:6327/new-message";
+
+
+
+function add_message(input){
+    console.log('added?');
+    console.log(input.value);
+    const newMessage = create_message(input.value, "hider");
+    
+    fetch(filePath, {
+        method: "POST",
+        body: JSON.stringify(newMessage),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (res){
+        if(res.status === 200){
+            console.log("New message sent");
+        }else{
+            alert("Err: An error occured whilst sending message.");
+        }
+    });
+}
+
+function create_message(input, role){
+    let message = new Object();
+    message.sender = role;
+    message.content = input;
+    return message;
 }
