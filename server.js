@@ -35,9 +35,14 @@ app.get("/messages", function (req, res, next){
     res.status(200).sendFile(__dirname + "/message-history.json");
 });
 
-app.get("/test", function (req, res, next){
-    console.log("== GET /test");
-    res.render("messaging")
+app.get("/chat/:role", function (req, res, next){
+    let role = req.params.role.toLowerCase();
+    if(role != "seeker" && role != "hider"){
+        next();
+    }
+    //capitalizes the first letter (ex. "hider" -> "Hider")
+    role = role.charAt(0).toUpperCase() + role.substring(1, role.length);
+    res.render("messaging", {role});
 });
 
 app.post("/new-message", function (req, res){

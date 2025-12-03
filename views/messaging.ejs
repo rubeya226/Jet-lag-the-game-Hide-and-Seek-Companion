@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jet Lag Hide and Seek</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/mssg-client.js" charset="utf-8" defer></script>
 </head>
-<body>
+<body onload="window.role = window.role || '<%= role.toLowerCase() %>'">
     <div class="phone-frame">
         <header class="top-bar">
-            <h1>Hider Chat</h1>
+            <h1><%= role %> Chat</h1>
         </header>
 
         <main id="chat-container">
