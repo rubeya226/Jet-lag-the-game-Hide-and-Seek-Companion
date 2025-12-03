@@ -71,6 +71,70 @@ app.get("/messages", function (req, res, next){
     res.status(200).sendFile(__dirname + "/message-history.json");
 });
 
+/*
+ *******************************************************************************
+ Drawing Cards
+ *******************************************************************************
+ */
+
+// .cards so that we get the array inside the JSON object
+var cards = JSON.parse(fs.readFileSync(__dirname + "/cards.json")).cards
+var idx_of_cards_drawn = []
+var num_of_cards = 0
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function isCardAlreadyDrawn(idx) {
+    for (let i = 0; i < idx_of_cards_drawn.length; i++) {
+        if(idx == idx_of_cards_drawn[i]){
+            return true
+        }
+    }
+    return false
+}
+
+app.get("/", function (req, res, next){
+    console.log("== GET /");
+    res.status(200).render("index");
+})
+
+/*
+ * Drawing Cards
+ */
+app.get("/draw-card", (req, res) => {
+    console.log("== GET /draw-card");
+
+    // Generate a random index for the card
+    var idx = getRandomInt(0, cards.length - 1)
+
+    // If num of cards is 0, just add the card
+    if(num_of_cards == 0) {
+        idx_of_cards_drawn.push(idx)
+    } else { // Else, check if card is already drawn
+        while (isCardAlreadyDrawn(idx)) {
+            idx = getRandomInt(0, cards.length - 1)
+        }
+        idx_of_cards_drawn.push(idx)
+    }
+
+    // Get the num of cards in hand
+    num_of_cards = idx_of_cards_drawn.length
+    console.log("idx length: " + idx_of_cards_drawn.length)
+    console.log("Num of cards drawn: " + num_of_cards)
+    console.log("Indices of cards drawn: " + idx_of_cards_drawn)
+
+    // Render the card 
+    res.render("cardDraw", {
+        cards: cards,
+        num_of_cards: num_of_cards,
+        idx_of_cards_drawn: idx_of_cards_drawn
+    }) 
+});
+
 app.listen(port, function (){
     console.log("== listening on " + port);
 });

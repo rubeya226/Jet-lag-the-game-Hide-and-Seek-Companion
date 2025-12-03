@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet Lag Hide and Seek</title>
+    <script src="cardDraw.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="phone-frame">
+
+        <!-- home screen stuff (this is the first thing they see) -->
+        <section id="home-screen" class="screen">
+            <h1 class="title">Jet Lag: Hide & Seek</h1>
+
+            <!-- buttons for navigating -->
+            <button class="home-btn" id="rules-btn">Rules</button>
+            <button class="home-btn hider" id="start-hide-btn">Begin Hiding</button>
+            <button class="home-btn seeker" id="start-seek-btn">Begin Seeking</button>
+        </section>
+
+
+        <!-- records (the leaderboard) -->
+        <div id="records-section">
+            <h2>Longest Hiding Times</h2>
+            <ul id="records-list">
+                <li class="first-place">Jimmy: 4m 32s</li>
+                <li class="second-place">Joe: 3m 58s</li>
+                <li class="third-place">John: 2m 41s</li>
+            </ul>
+        </div>
+
+
+        <!-- rules page (hidden for now, will show when clicking) -->
+        <section id="rules-screen" class="screen hidden">
+            <h2>Game Rules</h2>
+            <ul>
+                <li>You are the hider.</li>
+                <li>Send clues when prompted.</li>
+                <li>Stay within the game boundaries.</li>
+                <li>Curses and power-ups will be dispensed when you draw a card.</li>
+            </ul>
+            <button class="back-btn" id="back-from-rules">Back</button>
+        </section>
+
+
+        <!-- chat screen (hidden by default, gets shown later) -->
+        <section id="chat-screen" class="screen hidden">
+            <header class="top-bar">
+                <h1>Hider Chat</h1>
+            </header>
+
+            <main id="chat-container">
+                <!-- fake messages for now just so we can see it -->
+                <div class="message hider">
+                    <p>Here is an example clue.</p>
+                    <span class="time">10:03</span>
+                </div>
+
+                <div class="message seeker">
+                    <p>Where are you?</p>
+                    <span class="time">10:04</span>
+                </div>
+
+                <div class="message hider">
+                    <p>You'll have to figure that out :)</p>
+                    <span class="time">10:05</span>
+                </div>
+            </main>
+
+            <!-- bottom bar thing for typing + sending -->
+            <footer id="input-area">
+                <input type="text" id="guess-input" placeholder="Send clue...">
+                <button id="send-btn">Send</button>
+            </footer>
+        </section>
+        <!-- card screen -->
+        <section id="card-screen" class="screen">
+
+            <h2 class="timer-text">Current Hiding Time: xx:yy</h2>
+
+            <button class="home-btn" id="history-btn">
+                See Message History <span class="alert">!</span>
+            </button>
+
+                <button class="home-btn" id="draw-card-btn">
+                    Draw Card
+                </button>
+
+            <div class="card-grid">
+                <% for(let i = 0; i < num_of_cards; i++) {
+                    if(i > 5) {
+                        break;
+                    }
+                    let idx = idx_of_cards_drawn[i];
+                    let card = cards[idx]%>
+                    <%- include("singleCard", {
+                        type: card.type,
+                        title: card.title,
+                        description: card.description,
+                        castingCost: card.castingCost,
+                        imgURL: card.imgURL
+                    }) %>
+                <% } %>
+            </div>
+
+            <button class="back-btn" id="back-from-cards">Back</button>
+        </section>
+
+        <!-- the jet lag circle logo(just sits on bottom) -->
+        <img id="jetlag-logo" src="images/jetlag-logo.jpg" alt="Jet Lag Logo">
+
+    </div>
+
+</body>
+</html>
