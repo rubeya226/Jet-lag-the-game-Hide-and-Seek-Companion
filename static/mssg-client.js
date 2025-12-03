@@ -1,5 +1,12 @@
 let flipNum = 2;
 
+function initialLoad(role){
+    role = role.toLowerCase();
+    window.role = window.role || role; 
+    updateMessages();
+    scrollToBottom();
+}
+
 /*
  *******************************************************************************
  * Retrieving Messages
@@ -30,6 +37,12 @@ async function getMessages(){
 
 function getMessageContainer(){
     return document.getElementById("chat-container");
+}
+
+function scrollToBottom(){
+    let container = getMessageContainer();
+    console.log("this is being called");
+    container.scrollTop = container.scrollHeight;
 }
 
 function getDisplayedMessagesCount(container){
