@@ -7,32 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="top-bar">
-        <h1>Hider Chat</h1>
-    </header>
+    <div class="phone-frame">
+        <header class="top-bar">
+            <h1>Hider Chat</h1>
+        </header>
 
-    <main id="chat-container">
-        <!-- fake messages for now just so we can see it -->
-        <div class="message hider">
-            <p>Here is an example clue.</p>
-            <span class="time">10:03</span>
-        </div>
+        <main id="chat-container">
+            <!-- fake messages for now just so we can see it -->
+            <div class="message hider">
+                <p>Here is an example clue.</p>
+                <span class="time">10:03</span>
+            </div>
 
-        <div class="message seeker">
-            <p>Where are you?</p>
-            <span class="time">10:04</span>
-        </div>
+            <div class="message seeker">
+                <p>Where are you?</p>
+                <span class="time">10:04</span>
+            </div>
 
-        <div class="message hider">
-            <p>You'll have to figure that out :)</p>
-            <span class="time">10:05</span>
-        </div>
-    </main>
+            <div class="message hider">
+                <p>You'll have to figure that out :)</p>
+                <span class="time">10:05</span>
+            </div>
+        </main>
 
-    <!-- bottom bar thing for typing + sending -->
-    <footer id="input-area">
-        <input type="text" id="guess-input" placeholder="Send clue...">
-        <button id="send-btn">Send</button>
-    </footer>
+        <!-- bottom bar thing for typing + sending -->
+        <footer id="input-area">
+            <input type="text" id="guess-input" placeholder="Send clue...">
+            <button id="send-btn">Send</button>
+        </footer>
+    </div>
 </body>
 </html> 
