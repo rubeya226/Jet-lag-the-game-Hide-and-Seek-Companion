@@ -1,4 +1,4 @@
-let flipNum = 3;
+let flipNum = 1;
 
 /*
  *******************************************************************************
@@ -29,7 +29,7 @@ async function getMessages(){
 }
 
 function getMessageContainer(){
-    return document.getElementsByClassName("chat-container")[0];
+    return document.getElementById("chat-container");
 }
 
 function getDisplayedMessagesCount(container){

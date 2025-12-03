@@ -7,28 +7,14 @@
     <link rel="stylesheet" href="/style.css">
     <script src="/mssg-client.js" charset="utf-8" defer></script>
 </head>
-<body onload="window.role = window.role || '<%= role.toLowerCase() %>'">
+<body onload="window.role = window.role || '<%= role.toLowerCase() %>'; updateMessages()">
     <div class="phone-frame">
         <header class="top-bar">
             <h1><%= role %> Chat</h1>
         </header>
 
         <main id="chat-container">
-            <!-- fake messages for now just so we can see it -->
-            <div class="message hider">
-                <p>Here is an example clue.</p>
-                <span class="time">10:03</span>
-            </div>
-
-            <div class="message seeker">
-                <p>Where are you?</p>
-                <span class="time">10:04</span>
-            </div>
-
-            <div class="message hider">
-                <p>You'll have to figure that out :)</p>
-                <span class="time">10:05</span>
-            </div>
+            
         </main>
 
         <!-- bottom bar thing for typing + sending -->
