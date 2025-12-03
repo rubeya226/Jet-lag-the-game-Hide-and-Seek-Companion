@@ -144,24 +144,34 @@ body {
 }
 
 
-/* seeker msg on left */
+/* seeker msg */
 .message.seeker {
-    align-self: flex-start;     /* pushes this bubble to the left side */
     background: #e5e5ea;
     color: black;
+}
+
+/* hider msg */
+.message.hider {
+    background: #ff7a00;
+    color: white;
+}
+
+/* opponent message (disp. on left) */
+.message.opp {
+    align-self: flex-start;     /* pushes this bubble to the left side */
     margin-left: 8px;
     border-bottom-left-radius: 4px;
 }
 
-
-/* hider msg on right */
-.message.hider {
+/* ally/self message (disp. on right) */
+.message.self {
     align-self: flex-end;       /* pushes this bubble to the right side */
-    background: #ff7a00;
-    color: white;
     margin-right: 8px;
     border-bottom-right-radius: 4px;
 }
+
+
+
 
 
 /* tiny timestamps */

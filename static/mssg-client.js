@@ -1,4 +1,4 @@
-const flipNum = 3;
+let flipNum = 1;
 
 /*
  *******************************************************************************
@@ -29,7 +29,7 @@ async function getMessages(){
 }
 
 function getMessageContainer(){
-    return document.getElementsByClassName("messages")[0];
+    return document.getElementById("chat-container");
 }
 
 function getDisplayedMessagesCount(container){
@@ -60,11 +60,8 @@ function createMessage(role, container, message){
     container.appendChild(newMssg);
 }
 
-function temp(){
-    updateMessages("hider");
-}
-
-async function updateMessages(role){
+async function updateMessages(){
+    let role = window.role;
     if(await getMessageChange()){
         let mssgs = await getMessages();
         let container = getMessageContainer();
@@ -75,7 +72,7 @@ async function updateMessages(role){
         }
     }
 
-    setTimeout(temp, 500);
+    setTimeout(updateMessages, 500);
 }
 
 /*
@@ -93,7 +90,7 @@ const filePath = "http://flip" + flipNum + ".engr.oregonstate.edu:6327/new-messa
 function add_message(input){
     console.log('added?');
     console.log(input.value);
-    const newMessage = create_message(input.value, "hider");
+    const newMessage = create_message(input.value, window.role);
     
     fetch(filePath, {
         method: "POST",
@@ -107,6 +104,7 @@ function add_message(input){
         }else{
             alert("Err: An error occured whilst sending message.");
         }
+        input.value = "";
     });
 }
 
