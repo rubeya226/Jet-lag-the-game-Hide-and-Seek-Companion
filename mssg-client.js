@@ -2,7 +2,8 @@ const flipNum = 3;
 
 /*
  *******************************************************************************
- Retrieving Messages
+ * Retrieving Messages
+ * Author: Brennan Duman
  *******************************************************************************
  */
 
@@ -79,7 +80,8 @@ async function updateMessages(role){
 
 /*
  *******************************************************************************
- Sending Messages
+ * Sending Messages
+ * Author: Joe Haney
  *******************************************************************************
  */
 const input = document.getElementById("input");
