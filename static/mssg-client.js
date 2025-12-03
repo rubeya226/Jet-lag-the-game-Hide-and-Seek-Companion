@@ -29,7 +29,7 @@ async function getMessages(){
 }
 
 function getMessageContainer(){
-    return document.getElementsByClassName("messages")[0];
+    return document.getElementsByClassName("chat-container")[0];
 }
 
 function getDisplayedMessagesCount(container){
