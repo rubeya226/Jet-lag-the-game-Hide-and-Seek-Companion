@@ -34,27 +34,19 @@
     },
     {
       "sender": "hider",
-      "content": "Curse of the imbecile -- nuh uh"
+      "content": "wait y r u getting closer"
+    },
+    {
+      "sender": "seeker",
+      "content": "So you can give me the cards?"
+    },
+    {
+      "sender": "seeker",
+      "content": "Because I found you?"
     },
     {
       "sender": "hider",
-      "content": "Curse of the imbecile -- nuh uh"
-    },
-    {
-      "sender": "hider",
-      "content": "Curse of the imbecile -- nuh uh"
-    },
-    {
-      "sender": "hider",
-      "content": "Curse of the imbecile -- nuh uh"
-    },
-    {
-      "sender": "hider",
-      "content": "Curse of the imbecile -- nuh uh"
-    },
-    {
-      "sender": "hider",
-      "content": "Curse of the imbecile -- nuh uh"
+      "content": "NUH UH"
     }
   ]
 }
