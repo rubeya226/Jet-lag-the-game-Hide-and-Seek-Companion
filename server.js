@@ -23,16 +23,14 @@ function getMessageCount(){
     return mssgs.messages.length;
 }
 
-app.get("/message-change", function (req, res, next){
-    //console.log("== GET /message-change");
-    let mssgNum = getMessageCount();
-    //console.log("  -- count = " + mssgNum);
-    res.status(200).json({count: mssgNum});
+app.get("/", function (req, res, next){
+    console.log("== GET /");
+    res.render("home");
 });
 
-app.get("/messages", function (req, res, next){
-    console.log("== GET /messages");
-    res.status(200).sendFile(__dirname + "/message-history.json");
+app.get("/hider", function (req, res, next){
+    console.log("== GET /hider");
+    res.render("hider");
 });
 
 app.get("/chat/:role", function (req, res, next){
@@ -45,6 +43,9 @@ app.get("/chat/:role", function (req, res, next){
     res.render("messaging", {role});
 });
 
+/*
+ * Recieve a new Message
+ */
 app.post("/new-message", function (req, res){
     console.log("== POST /new-message");
     let mssgs = getMessages();
@@ -54,6 +55,20 @@ app.post("/new-message", function (req, res){
         JSON.stringify(mssgs, null, 2)
     );
     res.status(200).send("Message Recieved.");
+});
+
+/*
+ * GET Message Information
+ */
+app.get("/message-change", function (req, res, next){
+    //console.log("== GET /message-change");
+    let mssgNum = getMessageCount();
+    //console.log("  -- count = " + mssgNum);
+    res.status(200).json({count: mssgNum});
+});
+app.get("/messages", function (req, res, next){
+    console.log("== GET /messages");
+    res.status(200).sendFile(__dirname + "/message-history.json");
 });
 
 app.listen(port, function (){
