@@ -60,11 +60,8 @@ function createMessage(role, container, message){
     container.appendChild(newMssg);
 }
 
-function temp(){
-    updateMessages("hider");
-}
-
-async function updateMessages(role){
+async function updateMessages(){
+    let role = window.role;
     if(await getMessageChange()){
         let mssgs = await getMessages();
         let container = getMessageContainer();
@@ -75,7 +72,7 @@ async function updateMessages(role){
         }
     }
 
-    setTimeout(temp, 500);
+    setTimeout(updateMessages, 500);
 }
 
 /*
