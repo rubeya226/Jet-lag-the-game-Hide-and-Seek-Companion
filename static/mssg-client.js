@@ -104,6 +104,7 @@ function add_message(input){
         }else{
             alert("Err: An error occured whilst sending message.");
         }
+        input.value = "";
     });
 }
 
