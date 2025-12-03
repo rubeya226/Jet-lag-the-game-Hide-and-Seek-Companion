@@ -90,6 +90,12 @@ const filePath = "http://flip" + flipNum + ".engr.oregonstate.edu:6327/new-messa
 function add_message(input){
     console.log('added?');
     console.log(input.value);
+
+    if(!input.value){
+        console.log("Can't send a blank message");
+        return;
+    }
+
     const newMessage = create_message(input.value, window.role);
     
     fetch(filePath, {
