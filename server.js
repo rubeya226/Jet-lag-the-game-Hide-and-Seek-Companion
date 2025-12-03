@@ -14,6 +14,8 @@ app.use(cors({
 
 app.use(express.json());
 
+app.set("view engine", "ejs");
+
 function getMessages(){
     return JSON.parse(fs.readFileSync(__dirname + "/message-history.json"));
 }
@@ -33,6 +35,11 @@ app.get("/message-change", function (req, res, next){
 app.get("/messages", function (req, res, next){
     console.log("== GET /messages");
     res.status(200).sendFile(__dirname + "/message-history.json");
+});
+
+app.get("/test", function (req, res, next){
+    console.log("== GET /test");
+    res.render("messaging")
 });
 
 app.post("/new-message", function (req, res){
