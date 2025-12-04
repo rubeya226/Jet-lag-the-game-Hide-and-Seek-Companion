@@ -35,6 +35,6 @@ Wendover Productions, or Nebula.
 
 Team Members:
 Brennan Duman - Recieving/displaying messages & EJS templatization\
-Joe Haney - Sending/storing messages & hider time tracking (& leaderboard?)
-Aidan Rubey - Drawing & playing cards
-Nathan Anderson - All frontend design
+Joe Haney - Sending/storing messages & hider time tracking (& leaderboard?)\
+Aidan Rubey - Drawing & playing cards\
+Nathan Anderson - All frontend design\
