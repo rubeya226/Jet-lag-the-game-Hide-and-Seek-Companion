@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/style.css">
     <script src="/mssg-client.js" charset="utf-8" defer></script>
 </head>
-<body onload="window.role = window.role || '<%= role.toLowerCase() %>'; updateMessages()">
+<body onload="initialLoad('<%= role %>')">
     <div class="phone-frame">
         <header class="top-bar">
             <h1><%= role %> Chat</h1>
