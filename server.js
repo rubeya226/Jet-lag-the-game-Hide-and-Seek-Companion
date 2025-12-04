@@ -97,11 +97,6 @@ function isCardAlreadyDrawn(idx) {
     return false
 }
 
-app.get("/", function (req, res, next){
-    console.log("== GET /");
-    res.status(200).render("index");
-})
-
 /*
  * Drawing Cards
  */
