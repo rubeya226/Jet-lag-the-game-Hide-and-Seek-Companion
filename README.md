@@ -34,7 +34,7 @@ Oregon State University. This project has no affiliations with Jet Lag: The Game
 Wendover Productions, or Nebula.
 
 Team Members:
-Brennan Duman - Recieving/displaying messages & EJS templatization\n
+Brennan Duman - Recieving/displaying messages & EJS templatization\
 Joe Haney - Sending/storing messages & hider time tracking (& leaderboard?)
 Aidan Rubey - Drawing & playing cards
 Nathan Anderson - All frontend design
