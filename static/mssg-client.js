@@ -1,5 +1,3 @@
-let flipNum = 3;
-
 function initialLoad(role){
     role = role.toLowerCase();
     window.role = window.role || role; 
@@ -17,7 +15,7 @@ function initialLoad(role){
 async function getMessageChange(){
     let localMssgCount = document.getElementsByClassName("message").length;
 
-    let mssgData = await fetch("http://flip" + flipNum + ".engr.oregonstate.edu:6327/message-change");
+    let mssgData = await fetch("/message-change");
     let json = await mssgData.json();
     let mssgCount = json.count;
 
@@ -30,7 +28,7 @@ async function getMessageChange(){
 }
 
 async function getMessages(){
-    let messageData = await fetch("http://flip" + flipNum + ".engr.oregonstate.edu:6327/messages");
+    let messageData = await fetch("/messages");
     let json = await messageData.json();
     return await json.messages;
 }
@@ -96,7 +94,7 @@ async function updateMessages(){
  */
 const input = document.getElementById("input");
 const send_button = document.getElementById("send-button");
-const filePath = "http://flip" + flipNum + ".engr.oregonstate.edu:6327/new-message";
+const filePath = "/new-message";
 
 
 
