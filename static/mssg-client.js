@@ -1,4 +1,4 @@
-let flipNum = 2;
+let flipNum = 3;
 
 function initialLoad(role){
     role = role.toLowerCase();
