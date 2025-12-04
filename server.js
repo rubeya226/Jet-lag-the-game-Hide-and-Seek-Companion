@@ -135,6 +135,11 @@ app.get("/draw-card", (req, res) => {
     }) 
 });
 
+app.get("*splat", function (req, res){
+    console.log("==GET ~~ Error: 404");
+    res.render("404");
+});
+
 app.listen(port, function (){
     console.log("== listening on " + port);
 });
