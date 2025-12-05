@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jet Lag Hide and Seek</title>
     <link rel="stylesheet" href="/style.css">
-    <script src="/hider.js" charset="utf-8" defer></script>
+    
 
 </head>
 <body>
     <div class="phone-frame">
         <section id="card-screen" class="screen">
 
-            <h2 class="timer-text">Current Hiding Time: xx:yy</h2>
-
+            <h2 class="timer-text" id="timer-text">Hiding Time: 00:00:00</h2>
+            <button class="home-btn" id="start-timer-btn" onclick="timer_start()">
+                start timer
+            </button>
+            <button class="home-btn" id="pause-timer-btn" onclick="timer_pause()">
+                pause timer
+            </button>
+            <button class="home-btn" id="end-timer-btn" onclick="timer_end()">
+                end timer
+            </button>
             <button class="home-btn" id="history-btn" onclick="chat()">
                 See Message History <span class="alert">!</span>
             </button>
@@ -38,5 +46,6 @@
         <!-- the jet lag circle logo(just sits on bottom) -->
         <img id="jetlag-logo" src="images/jetlag-logo.jpg" alt="Jet Lag Logo">
     </div>
+    <script src="/hider.js" charset="utf-8" defer></script>
 </body>
 </html> 

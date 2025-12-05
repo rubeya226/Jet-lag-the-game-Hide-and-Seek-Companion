@@ -247,7 +247,10 @@ body {
 
 #back-from-cards:hover,
 #draw-card-btn:hover,
-#history-btn:hover{
+#history-btn:hover,
+#start-timer-btn:hover,
+#end-timer-btn:hover,
+#pause-timer-btn:hover{
     cursor: pointer;
     transform: scale(1.05);
 }
@@ -306,4 +309,28 @@ body {
 #records-section,
 #jetlag-logo {
     display: none !important;
+}
+#start-timer-btn{
+    background-color: #FFD300 !important;
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
+    width: 30%;
+    margin: 10px 0;
+}
+#end-timer-btn{
+    background-color: #2600ff !important;
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
+    width: 30%;
+    margin: 10px 0;
+}
+#pause-timer-btn{
+    background-color: #2fb635 !important;
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
+    width: 30%;
+    margin: 10px 0;
 }

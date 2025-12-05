@@ -1,4 +1,4 @@
-let flipNum = 2;
+let flipNum = 3;
 /*
  * go to the specified page
  */
