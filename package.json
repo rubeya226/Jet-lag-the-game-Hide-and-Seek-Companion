@@ -5,6 +5,7 @@
     "express": "^5.1.0"
   },
   "scripts":{
+    "prestart": "node card-compiler.js card-templates.json cards.json",
     "start": "node server.js"
   }
 }
