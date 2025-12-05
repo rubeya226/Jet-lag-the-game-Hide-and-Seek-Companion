@@ -59,7 +59,7 @@ app.get("/chat/:role", function (req, res, next){
     if(role != "seeker" && role != "hider"){
         next();
     }
-    console.log("== GET /chat/", role);
+    console.log("== GET /chat/" + role);
     //capitalizes the first letter (ex. "hider" -> "Hider")
     role = role.charAt(0).toUpperCase() + role.substring(1, role.length);
     res.render("messaging", {role});
@@ -164,6 +164,11 @@ app.get("/draw-card", (req, res) => {
         num_of_cards: num_of_cards,
         idx_of_cards_drawn: idx_of_cards_drawn
     }) 
+});
+
+app.get("/favicon.ico", function (req, res, next){
+    console.log("== GET /favicon.ico");
+    res.sendFile(__dirname + "/static/images/favicon.ico");
 });
 
 app.get("*splat", function (req, res){
