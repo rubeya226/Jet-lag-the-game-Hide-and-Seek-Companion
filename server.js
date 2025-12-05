@@ -166,7 +166,8 @@ app.get("/draw-card", (req, res) => {
 });
 
 app.get("*splat", function (req, res){
-    console.log("==GET ~~ Error: 404");
+    console.log("== GET", req.originalUrl);
+    console.log("   ~~ Error: 404");
     res.render("404");
 });
 
