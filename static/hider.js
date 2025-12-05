@@ -1,7 +1,5 @@
-let flipNum = 2;
-
 function chat(){
-    window.location.href = "http://flip" + flipNum + ".engr.oregonstate.edu:6327/chat/hider";
+    window.location.href = "/chat/hider";
 }
 var display = document.getElementById('timer-text')
 var spent_time = 0

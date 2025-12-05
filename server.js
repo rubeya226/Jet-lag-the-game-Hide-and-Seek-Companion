@@ -6,6 +6,9 @@ let port = process.env.PORT || 6327;
 
 let app = express();
 
+//this is required to allow for fetch() to work. It does not follow web safety
+//  standards, but this was the simplest solution considering our URLs are not
+//  set (can be flip1, flip2, etc.)
 app.use(cors({
   origin: '*'
 }));
@@ -14,25 +17,43 @@ app.use(express.json());
 app.use(express.static("static"));
 app.set("view engine", "ejs");
 
+/*
+ * gets object with the most recent copy of the message history
+ * Returns {obj} - object with list of messages
+ */
 function getMessages(){
     return JSON.parse(fs.readFileSync(__dirname + "/message-history.json"));
 }
 
+/*
+ * gets the number of messages stored server-side
+ * Returns {int} - number of stored messages
+ */
 function getMessageCount(){
     const mssgs = getMessages();
     return mssgs.messages.length;
 }
 
+/*
+ * GET home page
+ */
 app.get("/", function (req, res, next){
     console.log("== GET /");
     res.render("home");
 });
 
+/*
+ * GET hider page
+ */
 app.get("/hider", function (req, res, next){
     console.log("== GET /hider");
     res.render("hider");
 });
 
+/*
+ * GET chat page
+ * Param: role - either "seeker" or "hider"
+ */
 app.get("/chat/:role", function (req, res, next){
     let role = req.params.role.toLowerCase();
     if(role != "seeker" && role != "hider"){
@@ -44,7 +65,14 @@ app.get("/chat/:role", function (req, res, next){
 });
 
 /*
- * Recieve a new Message
+ *******************************************************************************
+ Sending & recieving messages
+ *******************************************************************************
+ */
+
+/*
+ * POST a new message
+ * stores new messages on the server for everyone to access
  */
 app.post("/new-message", function (req, res){
     console.log("== POST /new-message");
@@ -58,7 +86,9 @@ app.post("/new-message", function (req, res){
 });
 
 /*
- * GET Message Information
+ * GET the number of server-side messages
+ * used to see if there's a discrepency between server and client (aka if a new
+ *   message has been sent)
  */
 app.get("/message-change", function (req, res, next){
     //console.log("== GET /message-change");
@@ -66,6 +96,11 @@ app.get("/message-change", function (req, res, next){
     //console.log("  -- count = " + mssgNum);
     res.status(200).json({count: mssgNum});
 });
+
+/*
+ * GET messages
+ * send all messages to client
+ */
 app.get("/messages", function (req, res, next){
     console.log("== GET /messages");
     res.status(200).sendFile(__dirname + "/message-history.json");
@@ -96,11 +131,6 @@ function isCardAlreadyDrawn(idx) {
     }
     return false
 }
-
-app.get("/", function (req, res, next){
-    console.log("== GET /");
-    res.status(200).render("index");
-})
 
 /*
  * Drawing Cards
@@ -135,6 +165,11 @@ app.get("/draw-card", (req, res) => {
     }) 
 });
 
+app.get("*splat", function (req, res){
+    console.log("==GET ~~ Error: 404");
+    res.render("404");
+});
+
 app.listen(port, function (){
     console.log("== listening on " + port);
 });
@@ -154,5 +189,6 @@ process.on("SIGINT", () =>{
         JSON.stringify(emptyMessages, null, 2)
     );
 
+    console.log("~~ ./message-history.json cleared.");
     process.exit();
 });
