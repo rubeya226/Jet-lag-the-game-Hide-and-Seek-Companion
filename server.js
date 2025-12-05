@@ -59,6 +59,7 @@ app.get("/chat/:role", function (req, res, next){
     if(role != "seeker" && role != "hider"){
         next();
     }
+    console.log("== GET /chat/", role);
     //capitalizes the first letter (ex. "hider" -> "Hider")
     role = role.charAt(0).toUpperCase() + role.substring(1, role.length);
     res.render("messaging", {role});

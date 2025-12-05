@@ -1,8 +1,18 @@
+/*
+ * stores the role in window & starts recursively checking for new messages
+ */
 function initialLoad(role){
     role = role.toLowerCase();
     window.role = window.role || role; 
     updateMessages();
     scrollToBottom();
+}
+
+/*
+ * handles going back to the previous page
+ */
+function back(){
+    window.location.href = "/" + window.role;
 }
 
 /*
@@ -39,7 +49,7 @@ function getMessageContainer(){
 
 function scrollToBottom(){
     let container = getMessageContainer();
-    console.log("this is being called");
+    //console.log("this is being called");
     container.scrollTop = container.scrollHeight;
 }
 

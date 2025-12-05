@@ -27,6 +27,15 @@ body {
     flex-direction: column;     /* everything inside goes in a top-to-bottom column */
 }
 
+/* back buttons */
+.back{
+    align-self: flex-start;
+    color: white;
+    background-color: #FFD300;
+    border-radius: 10px;
+    font-weight: 200;
+    width: 30%;
+}
 
 /* title on home screen */
 .title {
