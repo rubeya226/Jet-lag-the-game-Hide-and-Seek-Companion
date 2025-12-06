@@ -39,7 +39,10 @@ function getMessageCount(){
  */
 app.get("/", function (req, res, next){
     console.log("== GET /");
-    res.render("home");
+    res.render("frame", {
+        title: "Jet Lag Hide & Seek",
+        scriptFile: "/home.js"
+    });
 });
 
 /*

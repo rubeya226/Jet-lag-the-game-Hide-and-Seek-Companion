@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jet Lag Hide and Seek</title>
-    <link rel="stylesheet" href="/style.css">
-    <script src="/home.js" charset="utf-8" defer></script>
-
-</head>
-<body>
-    <div class="phone-frame">
-        <!-- home screen stuff (this is the first thing they see) -->
+<!-- home screen stuff (this is the first thing they see) -->
         
-        <h1 class="title">Jet Lag: Hide & Seek</h1>
+<h1 class="title">Jet Lag: Hide & Seek</h1>
 
-        <!-- buttons for navigating -->
-        <button class="home-btn" id="rules-btn" onclick="goTo('rules')">Rules</button>
-        <button class="home-btn hider" id="start-hide-btn" onclick="goTo('hider')">Begin Hiding</button>
-        <button class="home-btn seeker" id="start-seek-btn" onclick="goTo('seeker')">Begin Seeking</button>
-        
-        <%- include("records") %>
+<!-- buttons for navigating -->
+<button class="home-btn" id="rules-btn" onclick="goTo('rules')">Rules</button>
+<button class="home-btn hider" id="start-hide-btn" onclick="goTo('hider')">Begin Hiding</button>
+<button class="home-btn seeker" id="start-seek-btn" onclick="goTo('seeker')">Begin Seeking</button>
 
-    </div>
-
-</body>
-</html> 
+<%- include("records") %>
