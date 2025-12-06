@@ -43,6 +43,14 @@ app.get("/", function (req, res, next){
 });
 
 /*
+ * GET rules page
+ */
+app.get("/rules", function (req, res, next){
+    console.log("== GET /rules");
+    res.render("rules");
+});
+
+/*
  * GET hider page
  */
 app.get("/hider", function (req, res, next){
@@ -106,6 +114,7 @@ app.get("/messages", function (req, res, next){
     console.log("== GET /messages");
     res.status(200).sendFile(__dirname + "/message-history.json");
 });
+
 
 /*
  *******************************************************************************
