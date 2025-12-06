@@ -9,7 +9,7 @@
     <%- include("script", {scriptFile}) %>
   <% } %>
 </head>
-<body>
+<body onload=<%= loadScript %>>
   <div class="phone-frame">
     <%- include(templateFile, fileInfo) %>
   </div>

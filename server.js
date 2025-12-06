@@ -42,6 +42,7 @@ app.get("/", function (req, res, next){
     res.render("frame", {
         title: "Jet Lag Hide & Seek",
         scriptFile: "/home.js",
+        loadScript: "",
         templateFile: "home",
         fileInfo: {}
     });
