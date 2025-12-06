@@ -41,7 +41,8 @@ app.get("/", function (req, res, next){
     console.log("== GET /");
     res.render("frame", {
         title: "Jet Lag Hide & Seek",
-        scriptFile: "/home.js"
+        scriptFile: "/home.js",
+        templateFile: "home"
     });
 });
 
