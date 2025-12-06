@@ -76,7 +76,14 @@ app.get("/chat/:role", function (req, res, next){
     console.log("== GET /chat/" + role);
     //capitalizes the first letter (ex. "hider" -> "Hider")
     role = role.charAt(0).toUpperCase() + role.substring(1, role.length);
-    res.render("messaging", {role});
+    //res.render("messaging", {role});
+    res.render("frame", {
+        title:"Jet Lag Hide & Seek - Chat",
+        scriptFile: "mssg-client.js",
+        loadScript: "initialLoad('<%= role %>')",
+        templateFile: "messaging",
+        fileInfo: {role}
+    });
 });
 
 /*
