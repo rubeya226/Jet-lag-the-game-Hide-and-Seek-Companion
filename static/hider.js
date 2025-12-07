@@ -61,7 +61,8 @@ function timer_end(){
     console.log("timer_end called")
     timer_pause()
     runTime = localStorage.getItem("time"); //for use in storing time to leaderboard
-    showLeaderboardModal();
+    console.log("runTime:", runTime);
+    showLeaderboardModal(runTime);
     localStorage.setItem("time", 0)
     spent_time = 0
     localStorage.setItem("start_time", Date.now())
