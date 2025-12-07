@@ -319,7 +319,7 @@ body {
     display: none !important;
 }
 #start-timer-btn{
-    background-color: #FFD300 !important;
+    background-color: #1dc01d !important;
     color: white;
     font-size: 12px;
     border-radius: 10px;
@@ -327,7 +327,7 @@ body {
     margin: 10px 0;
 }
 #end-timer-btn{
-    background-color: #2600ff !important;
+    background-color: #d10e0e !important;
     color: white;
     font-size: 12px;
     border-radius: 10px;
@@ -335,10 +335,13 @@ body {
     margin: 10px 0;
 }
 #pause-timer-btn{
-    background-color: #2fb635 !important;
+    background-color: #cfc536 !important;
     color: white;
     font-size: 12px;
     border-radius: 10px;
     width: 30%;
     margin: 10px 0;
+}
+#btn-box{
+    height: 160px;
 }

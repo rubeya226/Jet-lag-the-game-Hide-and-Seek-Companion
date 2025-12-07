@@ -1,23 +1,24 @@
 <section id="card-screen" class="screen">
 
     <h2 class="timer-text" id="timer-text">Hiding Time: 00:00:00</h2>
-    <button class="home-btn" id="start-timer-btn" onclick="timer_start()">
-        start timer
-    </button>
-    <button class="home-btn" id="pause-timer-btn" onclick="timer_pause()">
-        pause timer
-    </button>
-    <button class="home-btn" id="end-timer-btn" onclick="timer_end()">
-        end timer
-    </button>
-    <button class="home-btn" id="history-btn" onclick="chat()">
-        See Message History <span class="alert">!</span>
-    </button>
+    <div id="btn-box">
+        <button class="home-btn" id="start-timer-btn" onclick="timer_start()">
+            Start Timer
+        </button>
+        <button class="home-btn" id="pause-timer-btn" onclick="timer_pause()">
+            Pause Timer
+        </button>
+        <button class="home-btn" id="end-timer-btn" onclick="timer_end()">
+            Stop Timer
+        </button>
+        <button class="home-btn" id="history-btn" onclick="chat()">
+            See Message History <span class="alert">!</span>
+        </button>
 
-    <button class="home-btn" id="draw-card-btn">
-        Draw Card
-    </button>
-
+        <button class="home-btn" id="draw-card-btn">
+            Draw Card
+        </button>
+    </div>
     <div class="card-grid">
         <!-- Empty card placeholders -->
         <div class="card-slot"></div>
