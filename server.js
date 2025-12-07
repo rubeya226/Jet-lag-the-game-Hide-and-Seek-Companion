@@ -39,7 +39,13 @@ function getMessageCount(){
  */
 app.get("/", function (req, res, next){
     console.log("== GET /");
-    res.render("home");
+    res.render("frame", {
+        title: "Jet Lag Hide & Seek",
+        scriptFile: "/home.js",
+        loadScript: "",
+        templateFile: "home",
+        fileInfo: {}
+    });
 });
 
 /*
@@ -47,7 +53,13 @@ app.get("/", function (req, res, next){
  */
 app.get("/rules", function (req, res, next){
     console.log("== GET /rules");
-    res.render("rules");
+    res.render("frame", {
+        title: "Jet Lag Hide & Seek - Rules",
+        scriptFile: "",
+        loadScript: "",
+        templateFile: "rules",
+        fileInfo: {}
+    })
 });
 
 /*
@@ -55,7 +67,13 @@ app.get("/rules", function (req, res, next){
  */
 app.get("/hider", function (req, res, next){
     console.log("== GET /hider");
-    res.render("hider");
+    res.render("frame", {
+        title: "Jet Lag Hide & Seek - Hider",
+        scriptFile: "hider.js",
+        loadScript: "",
+        templateFile: "hider",
+        fileInfo: {}
+    })
 });
 
 /*
@@ -64,13 +82,26 @@ app.get("/hider", function (req, res, next){
  */
 app.get("/chat/:role", function (req, res, next){
     let role = req.params.role.toLowerCase();
+    //due to templatization, styles and script try to pull from /chat instead of /static when loading chat page
+    if(role == "style.css" || role == "mssg-client.js"){
+        res.status(200).sendFile(__dirname + "/static/" + role);
+        return;
+    }
+    
     if(role != "seeker" && role != "hider"){
         next();
     }
     console.log("== GET /chat/" + role);
     //capitalizes the first letter (ex. "hider" -> "Hider")
     role = role.charAt(0).toUpperCase() + role.substring(1, role.length);
-    res.render("messaging", {role});
+
+    res.render("frame", {
+        title:"Jet Lag Hide & Seek - Chat",
+        scriptFile: "mssg-client.js",
+        loadScript: "initialLoad('" + role.toLowerCase() + "')",
+        templateFile: "messaging",
+        fileInfo: {role}
+    });
 });
 
 /*
@@ -183,7 +214,13 @@ app.get("/favicon.ico", function (req, res, next){
 app.get("*splat", function (req, res){
     console.log("== GET", req.originalUrl);
     console.log("   ~~ Error: 404");
-    res.render("404");
+    res.render("frame", {
+        title: "Jet Lag Hide & Seek - 404",
+        scriptFile: "",
+        loadScript: "",
+        templateFile: "404",
+        fileInfo: {}
+    });
 });
 
 app.listen(port, function (){
