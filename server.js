@@ -60,7 +60,6 @@ app.get("/rules", function (req, res, next){
         templateFile: "rules",
         fileInfo: {}
     })
-    res.render("rules");
 });
 
 /*
