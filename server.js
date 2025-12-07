@@ -116,6 +116,7 @@ app.get("/chat/:role", function (req, res, next){
  */
 app.post("/new-message", function (req, res){
     console.log("== POST /new-message");
+    console.log("  -- " + req.body.sender + ": \"" + req.body.content + "\"");
     let mssgs = getMessages();
     mssgs.messages.push(req.body);
     fs.writeFileSync(
@@ -206,11 +207,17 @@ app.get("/draw-card", (req, res) => {
     }) 
 });
 
+/*
+ * GET the favicon (the little icon in the tab)
+ */
 app.get("/favicon.ico", function (req, res, next){
     console.log("== GET /favicon.ico");
     res.sendFile(__dirname + "/static/images/favicon.ico");
 });
 
+/*
+ * 404: No page found
+ */
 app.get("*splat", function (req, res){
     console.log("== GET", req.originalUrl);
     console.log("   ~~ Error: 404");
