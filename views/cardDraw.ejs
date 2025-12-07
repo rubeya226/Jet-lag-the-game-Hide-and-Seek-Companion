@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jet Lag Hide and Seek</title>
-    <script src="cardDraw.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="/cardDraw.js" defer></script>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -112,7 +112,21 @@
         <!-- the jet lag circle logo(just sits on bottom) -->
         <img id="jetlag-logo" src="images/jetlag-logo.jpg" alt="Jet Lag Logo">
 
+        <div id="modal-backdrop" class="hidden"></div>
+
+        <div id="card-remove-modal" class="hidden">
+            <h2>What would you like to do with your card?</h2>
+
+            <div class="options">
+                <button id="card-remove-btn" class="option remove">Remove Card</button>
+                <button class="option send">Send Card</button>
+            </div>
+
+            <button id="close-card-remove-modal">Close</button>
+        </div>
+
     </div>
+
 
 </body>
 </html>

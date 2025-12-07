@@ -5,6 +5,10 @@ function chat(){
     window.location.href = "/chat/hider";
 }
 
+document.getElementById("draw-card-btn").addEventListener("click", () => {
+    window.location.href = "/hider/draw-card";
+});
+
 var display = document.getElementById('timer-text')
 
 var spent_time = parseInt(localStorage.getItem("time")) || 0

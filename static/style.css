@@ -282,11 +282,17 @@ body {
 
 /* each empty card spot */
 .card-slot {
+    font-size: 8px;
     width: 100px;
     height: 150px;
     background-color: #d9d9d9;  /* the gray placeholder color */
     border-radius: 12px;        /* rounded corners like your mockup */
     overflow: hidden;           /* hides image edges if they stick out */
+}
+
+.card-slot:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 /* the one real card picture */
@@ -346,4 +352,79 @@ body {
 }
 #btn-box{
     height: 160px;
+}
+
+/* Card draw modal css */
+
+/* Dimmed backdrop */
+#modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;          /* above everything */
+}
+
+/* Modal window */
+#card-remove-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 30px;
+    width: 80%;
+    max-width: 350px;
+    z-index: 1000;         /* above backdrop */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+/* Title */
+#card-remove-modal h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    white-space: nowrap;   /* keep on one line */
+}
+
+/* Option buttons container */
+#card-remove-modal .options {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+/* Individual option */
+#card-remove-modal .option {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+/* Colors */
+.option.remove {
+    background-color: #ff7070;
+    color: white;
+}
+
+.option.send {
+    background-color: #67a5ff;
+    color: white;
+}
+
+/* Close button */
+#close-card-remove-modal {
+    margin-top: 15px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
 }

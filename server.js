@@ -177,20 +177,25 @@ function isCardAlreadyDrawn(idx) {
 /*
  * Drawing Cards
  */
-app.get("/draw-card", (req, res) => {
+
+
+app.get("/hider/draw-card", (req, res) => {
     console.log("== GET /draw-card");
 
-    // Generate a random index for the card
-    var idx = getRandomInt(0, cards.length - 1)
+    // If all the cards are drawn, just contiune 
+    if(num_of_cards < 6) {
+        // Generate a random index for the card
+        var idx = getRandomInt(0, cards.length - 1)
 
-    // If num of cards is 0, just add the card
-    if(num_of_cards == 0) {
-        idx_of_cards_drawn.push(idx)
-    } else { // Else, check if card is already drawn
-        while (isCardAlreadyDrawn(idx)) {
-            idx = getRandomInt(0, cards.length - 1)
+        // If num of cards is 0, just add the card
+        if(num_of_cards == 0) {
+            idx_of_cards_drawn.push(idx)
+        } else { // Else, check if card is already drawn
+            while (isCardAlreadyDrawn(idx)) {
+                idx = getRandomInt(0, cards.length - 1)
+            }
+            idx_of_cards_drawn.push(idx)
         }
-        idx_of_cards_drawn.push(idx)
     }
 
     // Get the num of cards in hand
@@ -206,6 +211,19 @@ app.get("/draw-card", (req, res) => {
         idx_of_cards_drawn: idx_of_cards_drawn
     }) 
 });
+
+/*
+ * Removing Cards
+ */
+app.post("/hider/remove-card/:idx", function(req, res, next){
+    var idx = Number(req.params.idx)
+    console.log("== POST /hider/remove-card/" + idx)
+    console.log("idx to remove: ",idx)
+
+    idx_of_cards_drawn.splice(idx, 1)
+
+    res.status(200).json({ success: true });
+})
 
 /*
  * GET the favicon (the little icon in the tab)

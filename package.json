@@ -2,9 +2,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
-    "express": "^5.1.0"
+    "express": "^5.2.1"
   },
-  "scripts":{
+  "scripts": {
     "prestart": "node card-compiler.js card-templates.json cards.json",
     "start": "node server.js"
   }
