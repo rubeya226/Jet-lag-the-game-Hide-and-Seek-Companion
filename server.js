@@ -208,7 +208,13 @@ app.get("/favicon.ico", function (req, res, next){
 app.get("*splat", function (req, res){
     console.log("== GET", req.originalUrl);
     console.log("   ~~ Error: 404");
-    res.render("404");
+    res.render("frame", {
+        title: "Jet Lag Hide & Seek - 404",
+        scriptFile: "",
+        loadScript: "",
+        templateFile: "404",
+        fileInfo: {}
+    });
 });
 
 app.listen(port, function (){
