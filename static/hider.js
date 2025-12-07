@@ -1,6 +1,8 @@
 
 var filePath = "/time.json"
 
+let runTime = 0;
+
 function chat(){
     window.location.href = "/chat/hider";
 }
@@ -48,6 +50,7 @@ function timer_pause(){
 function timer_end(){
     console.log("timer_end called")
     timer_pause()
+    runTime = localStorage.getItem("time"); //for use in storing time to leaderboard
     localStorage.setItem("time", 0)
     spent_time = 0
     localStorage.setItem("start_time", Date.now())
