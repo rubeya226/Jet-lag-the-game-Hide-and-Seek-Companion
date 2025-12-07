@@ -70,11 +70,12 @@ app.get("/hider", function (req, res, next){
  */
 app.get("/chat/:role", function (req, res, next){
     let role = req.params.role.toLowerCase();
-    //due to templatization, /styles.css tries to pull from /chat instead of /static when loading chat page
-    if(role == "styles.css"){
-        res.status(200).sendFile(__dirname + "/static/styles.css");
+    //due to templatization, styles and script try to pull from /chat instead of /static when loading chat page
+    if(role == "style.css" || role == "mssg-client.js"){
+        res.status(200).sendFile(__dirname + "/static/" + role);
         return;
     }
+    
     if(role != "seeker" && role != "hider"){
         next();
     }
@@ -85,7 +86,7 @@ app.get("/chat/:role", function (req, res, next){
     res.render("frame", {
         title:"Jet Lag Hide & Seek - Chat",
         scriptFile: "mssg-client.js",
-        loadScript: "initialLoad('<%= role %>')",
+        loadScript: "initialLoad('" + role.toLowerCase() + "')",
         templateFile: "messaging",
         fileInfo: {role}
     });
