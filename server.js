@@ -53,6 +53,13 @@ app.get("/", function (req, res, next){
  */
 app.get("/rules", function (req, res, next){
     console.log("== GET /rules");
+    res.render("frame", {
+        title: "Jet Lag Hide & Seek - Rules",
+        scriptFile: "",
+        loadScript: "",
+        templateFile: "rules",
+        fileInfo: {}
+    })
     res.render("rules");
 });
 
