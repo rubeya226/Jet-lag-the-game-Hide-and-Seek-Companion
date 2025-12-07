@@ -70,6 +70,11 @@ app.get("/hider", function (req, res, next){
  */
 app.get("/chat/:role", function (req, res, next){
     let role = req.params.role.toLowerCase();
+    //due to templatization, /styles.css tries to pull from /chat instead of /static when loading chat page
+    if(role == "styles.css"){
+        res.status(200).sendFile(__dirname + "/static/styles.css");
+        return;
+    }
     if(role != "seeker" && role != "hider"){
         next();
     }

@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jet Lag Hide and Seek</title>
-    <link rel="stylesheet" href="/style.css">
-    <script src="/mssg-client.js" charset="utf-8" defer></script>
-</head>
-<body onload="initialLoad('<%= role %>')">
-    <div class="phone-frame">
-        <button onclick="back()" class="back">&lt;- <%= role %> page</button>
-        <header class="top-bar">
-            <h1><%= role %> Chat</h1>
-        </header>
+<button onclick="back()" class="back">&lt;- <%= role %> page</button>
+<header class="top-bar">
+    <h1><%= role %> Chat</h1>
+</header>
 
-        <main id="chat-container">
-            
-        </main>
+<main id="chat-container">
+    
+</main>
 
-        <!-- bottom bar thing for typing + sending -->
-        <footer id="input-area">
-            <input type="text" id="guess-input" placeholder="Send clue...">
-            <button id="send-btn" onclick="add_message(document.getElementById('guess-input'))">Send</button>
-        </footer>
-    </div>
-</body>
-</html> 
+<!-- bottom bar thing for typing + sending -->
+<footer id="input-area">
+    <input type="text" id="guess-input" placeholder="Send clue...">
+    <button id="send-btn" onclick="add_message(document.getElementById('guess-input'))">Send</button>
+</footer>
