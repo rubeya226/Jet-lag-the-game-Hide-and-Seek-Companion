@@ -51,6 +51,7 @@ function timer_end(){
     console.log("timer_end called")
     timer_pause()
     runTime = localStorage.getItem("time"); //for use in storing time to leaderboard
+    showLeaderboardModal();
     localStorage.setItem("time", 0)
     spent_time = 0
     localStorage.setItem("start_time", Date.now())
@@ -82,5 +83,22 @@ function timer(){
     console.log("time stored in localStorage")
     display.textContent = "Hiding Time: "+time_format(spent_time)
     console.log("time updated to: "+parseInt(localStorage.getItem("time")))
+
+}
+
+function showLeaderboardModal(time){
+    time = time_format(time);
+    let modal = document.getElementById("leaderboard-add-modal");
+    let timeDisplay = document.getElementById("leaderboard-add-time");
+    timeDisplay.textContent = time;
+    modal.classList.toggle("hidden", false);
+}
+
+function hideLeaderboardModal(){
+    let modal = document.getElementById("leaderboard-add-modal");
+    modal.classList.toggle("hidden", true);
+}
+
+function storeLeaderboardData(){
 
 }
