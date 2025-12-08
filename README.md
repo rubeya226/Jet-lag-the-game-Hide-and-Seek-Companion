@@ -19,7 +19,7 @@ This project set some limits to avoid scope creep:
 
 1. For the purposes of this class (CS 290), the focus would be on the Hider interface,
 which contains a digital hand for cards, as well as an automated way to send cards through
-the built-in messaging system.
+the built-in messaging system and a timer/leaderboard system that permanently stores run times and user names.
 2. The project would assume only one game was occuring at a time (i.e. there is
 no support for concurrent games or seperate lobbies)
 
@@ -34,7 +34,7 @@ Oregon State University. This project has no affiliations with Jet Lag: The Game
 Wendover Productions, or Nebula.
 
 Team Members:
-Brennan Duman - Recieving/displaying messages & EJS templatization\
-Joe Haney - Sending/storing messages & hider time tracking (& leaderboard?)\
+Brennan Duman - Recieving/displaying messages & EJS templatization & leaderboard\
+Joe Haney - Sending/storing messages & hider time tracking\
 Aidan Rubey - Drawing & playing cards\
-Nathan Anderson - All frontend design\
+Nathan Anderson - All frontend design
