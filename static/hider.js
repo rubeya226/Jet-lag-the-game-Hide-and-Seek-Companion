@@ -18,22 +18,12 @@ var start_time = parseInt(localStorage.getItem("start_time")) || Date.now()
 var timer_interval
 var timer_running = localStorage.getItem("timer_run") === "true"
 var timer_done = false
-function twoDigitFormat(time){
-    if(time < 10){
-        return "0" + time;
-    }else{
-        return time;
-    }
-}
 function time_format(ms){
-    let hours = Math.floor(ms/3600000)
-    hours = twoDigitFormat(hours);
-    let minutes = Math.floor((ms % 3600000)/60000)
-    minutes = twoDigitFormat(minutes);
-    let seconds = Math.floor(((ms % 3600000)% 60000)/1000)
-    seconds = twoDigitFormat(seconds);
+    const hours = Math.floor(ms/3600000)
+    const minutes = Math.floor((ms % 3600000)/60000)
+    const seconds = Math.floor(((ms % 3600000)% 60000)/1000)
     return (
-        hours + ":" + minutes + ":" + seconds
+        String(hours).padStart(2, '0') +':'+ String(minutes).padStart(2, '0')+':'+ String(seconds).padStart(2, '0')
     )
 }
 function timer_start(){
@@ -61,7 +51,6 @@ function timer_end(){
     console.log("timer_end called")
     timer_pause()
     runTime = localStorage.getItem("time"); //for use in storing time to leaderboard
-    console.log("runTime:", runTime);
     showLeaderboardModal(runTime);
     localStorage.setItem("time", 0)
     spent_time = 0
