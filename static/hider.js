@@ -86,19 +86,30 @@ function timer(){
 
 }
 
+/*
+ * displays the modal
+ */
 function showLeaderboardModal(time){
     time = time_format(time);
     let modal = document.getElementById("leaderboard-add-modal");
     let timeDisplay = document.getElementById("leaderboard-add-time");
     timeDisplay.textContent = time;
     modal.classList.toggle("hidden", false);
+    //clear any text that may have been in the input
+    document.getElementById("name-leaderboard-input").value = "";
 }
 
+/*
+ * hides the modal
+ */
 function hideLeaderboardModal(){
     let modal = document.getElementById("leaderboard-add-modal");
     modal.classList.toggle("hidden", true);
 }
 
+/*
+ * sends POST request to store the time to server-leaderboard
+ */
 function storeLeaderboardData(){
     let nameInput = document.getElementById("name-leaderboard-input");
     

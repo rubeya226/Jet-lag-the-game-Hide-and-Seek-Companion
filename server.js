@@ -111,13 +111,47 @@ app.get("/chat/:role", function (req, res, next){
  */
 
 /*
+ * uses selection sort implementation to sort in ascending order
+ * Credit: Geeks4Geeks (https://www.geeksforgeeks.org/dsa/selection-sort-algorithm-2/)
+ * Params: times {list of obj w/ time property} - the list of times
+ * Returns {list of obj}: the sorted list
+ */
+function sortTimes(times){
+    let n = times.length;
+
+    for(let i = 0; i < n; i++){
+        let minIdx = i;
+
+        for(let j = i + 1; j < n; j++){
+            if(times[j].time < times[minIdx].time){
+                minIdx = j
+            }
+        }
+
+        let temp = times[i];
+        times[i] = times[minIdx];
+        times[minIdx] = temp;
+    }
+
+    return times;
+}
+
+function addNewTime(timeObj){
+    let times = JSON.parse(fs.readFileSync(__dirname + "/leaderboard.json"));
+    times.push(timeObj);
+    times = sortTimes(times);
+    fs.writeFileSync("/leaderboard.json", JSON.stringify(times, null, 2));
+}
+
+/*
  * POST a new leaderboard time
  * stores new leaderboard time & sorts it
  */
 app.post("/new-time", function (req, res){
     console.log("== POST /new-time");
     console.log("  -- " + req.body.name + " - " + req.body.timeStr);
-    res.status(200).send("'Ello");
+    addNewTime(req.body);
+    res.status(200).send("Time Recieved");
 });
 
 /*
