@@ -88,9 +88,6 @@ app.get("/rules", function (req, res, next){
  */
 app.get("/:hider", function (req, res, next){
     let draw = req.params.hider;
-
-    console.log("Draw param: " + draw)
-
     if (draw === "hider") {
         console.log("== GET /hider");
         res.render("frame", {
@@ -124,9 +121,9 @@ app.get("/:hider", function (req, res, next){
 
         // Get the num of cards in hand
         num_of_cards = idx_of_cards_drawn.length
-        console.log("idx length: " + idx_of_cards_drawn.length)
-        console.log("Num of cards drawn: " + num_of_cards)
-        console.log("Indices of cards drawn: " + idx_of_cards_drawn)
+        console.log("  -- idx length: " + idx_of_cards_drawn.length)
+        console.log("  -- Num of cards drawn: " + num_of_cards)
+        console.log("  -- Indices of cards drawn: " + idx_of_cards_drawn)
 
         res.render("frame", {
             title: "Jet Lag Hide & Seek - Hider",
@@ -246,7 +243,6 @@ function getTopThreeTimes(){
 app.get("/leaderboard", function (req, res){
     let times = getTopThreeTimes();
     times = JSON.stringify(times, null, 2);
-    console.log(times);
     res.status(200).send(times);
 });
 
@@ -325,9 +321,9 @@ app.post("/hider/draw-card", (req, res) => {
 
     // Get the num of cards in hand
     num_of_cards = idx_of_cards_drawn.length
-    console.log("idx length: " + idx_of_cards_drawn.length)
-    console.log("Num of cards drawn: " + num_of_cards)
-    console.log("Indices of cards drawn: " + idx_of_cards_drawn)
+    console.log("  -- idx length: " + idx_of_cards_drawn.length)
+    console.log("  -- Num of cards drawn: " + num_of_cards)
+    console.log("  -- Indices of cards drawn: " + idx_of_cards_drawn)
 
     // Render the card 
     res.render("frame", {
@@ -349,13 +345,13 @@ app.post("/hider/draw-card", (req, res) => {
 app.post("/hider/remove-card/:idx", function(req, res, next){
     var idx = Number(req.params.idx)
     console.log("== POST /hider/remove-card/" + idx)
-    console.log("idx to remove: ",idx)
+    console.log("  -- idx to remove: ",idx)
 
     num_of_cards -= 1 
-    console.log("Num of cards after removal: " + num_of_cards)
+    console.log("  -- Num of cards after removal: " + num_of_cards)
 
     idx_of_cards_drawn.splice(idx, 1)
-    console.log("Indices of cards after removal: " + idx_of_cards_drawn)
+    console.log("  -- Indices of cards after removal: " + idx_of_cards_drawn)
 
     res.status(200).json({ success: true });
 })
