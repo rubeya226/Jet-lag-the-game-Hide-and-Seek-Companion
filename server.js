@@ -106,6 +106,22 @@ app.get("/chat/:role", function (req, res, next){
 
 /*
  *******************************************************************************
+ Saving to leaderboard
+ *******************************************************************************
+ */
+
+/*
+ * POST a new leaderboard time
+ * stores new leaderboard time & sorts it
+ */
+app.post("/new-time", function (req, res){
+    console.log("== POST /new-time");
+    console.log("  -- " + req.body.name + " - " + req.body.timeStr);
+    res.status(200).send("'Ello");
+});
+
+/*
+ *******************************************************************************
  Sending & recieving messages
  *******************************************************************************
  */

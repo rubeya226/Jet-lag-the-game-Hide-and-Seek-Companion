@@ -100,5 +100,26 @@ function hideLeaderboardModal(){
 }
 
 function storeLeaderboardData(){
-
+    let nameInput = document.getElementById("name-leaderboard-input");
+    
+    let info = {
+        time: runTime,
+        timeStr: time_format(runTime),
+        name: nameInput.value
+    };
+    
+    fetch("/new-time", {
+        method: "POST",
+        body: JSON.stringify(info),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (res){
+        if(res.status === 200){
+            console.log("New time sent");
+        }else{
+            alert("Err: An error occured whilst sending new time.");
+        }
+        hideLeaderboardModal();
+    });
 }
