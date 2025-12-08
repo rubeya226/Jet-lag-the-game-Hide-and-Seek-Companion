@@ -198,6 +198,8 @@ function sortTimes(times){
         times[minIdx] = temp;
     }
 
+    time.reverse();
+
     return times;
 }
 
