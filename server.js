@@ -42,7 +42,7 @@ app.get("/", function (req, res, next){
     res.render("frame", {
         title: "Jet Lag Hide & Seek",
         scriptFile: "/home.js",
-        loadScript: "",
+        loadScript: "populateLeaderboard()",
         templateFile: "home",
         fileInfo: {}
     });
@@ -106,7 +106,7 @@ app.get("/chat/:role", function (req, res, next){
 
 /*
  *******************************************************************************
- Saving to leaderboard
+ Saving & retrieving leaderboard
  *******************************************************************************
  */
 
@@ -156,6 +156,30 @@ app.post("/new-time", function (req, res){
     console.log("  -- " + req.body.name + " - " + req.body.timeStr);
     addNewTime(req.body);
     res.status(200).send("Time Recieved");
+});
+
+/*
+ * gets the three shortest times from the leaderboard
+ * Returns {list of obj} - the top three entries
+ */
+function getTopThreeTimes(){
+    let times = JSON.parse(fs.readFileSync(__dirname + "/leaderboard.json"));
+    let topTimes = [];
+    for(let i = 0; i < 3; i++){
+        topTimes.push(times[i]);
+    }
+
+    return topTimes;
+}
+
+/*
+ * GET the top three leaderboard times
+ */
+app.get("/leaderboard", function (req, res){
+    let times = getTopThreeTimes();
+    times = JSON.stringify(times, null, 2);
+    console.log(times);
+    res.status(200).send(times);
 });
 
 /*
