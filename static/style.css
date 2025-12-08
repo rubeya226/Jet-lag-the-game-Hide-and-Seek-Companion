@@ -368,7 +368,7 @@ body {
 }
 
 /* Modal window */
-#card-remove-modal {
+.modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -384,14 +384,14 @@ body {
 }
 
 /* Title */
-#card-remove-modal h2 {
+.modal h2 {
     font-size: 1.3rem;
     margin-bottom: 15px;
     white-space: nowrap;   /* keep on one line */
 }
 
 /* Option buttons container */
-#card-remove-modal .options {
+.modal.options {
     display: flex;
     justify-content: space-between;
     gap: 15px;
@@ -399,7 +399,7 @@ body {
 }
 
 /* Individual option */
-#card-remove-modal .option {
+.modal.option {
     flex: 1;
     padding: 10px;
     border-radius: 8px;
@@ -421,10 +421,14 @@ body {
 }
 
 /* Close button */
-#close-card-remove-modal {
+.close-modal {
     margin-top: 15px;
     padding: 8px 16px;
     font-size: 1rem;
     border-radius: 8px;
     cursor: pointer;
+}
+
+#name-leaderboard-input{
+    width: 250px;
 }

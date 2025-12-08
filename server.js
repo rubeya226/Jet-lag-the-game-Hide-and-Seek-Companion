@@ -63,7 +63,7 @@ app.get("/", function (req, res, next){
     res.render("frame", {
         title: "Jet Lag Hide & Seek",
         scriptFile: "/home.js",
-        loadScript: "",
+        loadScript: "populateLeaderboard()",
         templateFile: "home",
         fileInfo: {}
     });
@@ -169,6 +169,84 @@ app.get("/chat/:role", function (req, res, next){
         templateFile: "messaging",
         fileInfo: {role}
     });
+});
+
+/*
+ *******************************************************************************
+ Saving & retrieving leaderboard
+ *******************************************************************************
+ */
+
+/*
+ * uses selection sort implementation to sort in ascending order
+ * Credit: Geeks4Geeks (https://www.geeksforgeeks.org/dsa/selection-sort-algorithm-2/)
+ * Params: times {list of obj w/ time property} - the list of times
+ * Returns {list of obj}: the sorted list
+ */
+function sortTimes(times){
+    let n = times.length;
+
+    for(let i = 0; i < n; i++){
+        let minIdx = i;
+
+        for(let j = i + 1; j < n; j++){
+            if(times[j].time < times[minIdx].time){
+                minIdx = j
+            }
+        }
+
+        let temp = times[i];
+        times[i] = times[minIdx];
+        times[minIdx] = temp;
+    }
+
+    return times;
+}
+
+function addNewTime(timeObj){
+    let times = JSON.parse(fs.readFileSync(__dirname + "/leaderboard.json"));
+    timeObj.time = parseInt(timeObj.time);
+    times.push(timeObj);
+    times = sortTimes(times);
+    fs.writeFileSync(
+        "./leaderboard.json", 
+        JSON.stringify(times, null, 2)
+    );
+}
+
+/*
+ * POST a new leaderboard time
+ * stores new leaderboard time & sorts it
+ */
+app.post("/new-time", function (req, res){
+    console.log("== POST /new-time");
+    console.log("  -- " + req.body.name + " - " + req.body.timeStr);
+    addNewTime(req.body);
+    res.status(200).send("Time Recieved");
+});
+
+/*
+ * gets the three shortest times from the leaderboard
+ * Returns {list of obj} - the top three entries
+ */
+function getTopThreeTimes(){
+    let times = JSON.parse(fs.readFileSync(__dirname + "/leaderboard.json"));
+    let topTimes = [];
+    for(let i = 0; i < 3; i++){
+        topTimes.push(times[i]);
+    }
+
+    return topTimes;
+}
+
+/*
+ * GET the top three leaderboard times
+ */
+app.get("/leaderboard", function (req, res){
+    let times = getTopThreeTimes();
+    times = JSON.stringify(times, null, 2);
+    console.log(times);
+    res.status(200).send(times);
 });
 
 /*

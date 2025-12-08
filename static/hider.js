@@ -1,6 +1,8 @@
 
 var filePath = "/time.json"
 
+let runTime = 0;
+
 function chat(){
     window.location.href = "/chat/hider";
 }
@@ -52,6 +54,8 @@ function timer_pause(){
 function timer_end(){
     console.log("timer_end called")
     timer_pause()
+    runTime = localStorage.getItem("time"); //for use in storing time to leaderboard
+    showLeaderboardModal(runTime);
     localStorage.setItem("time", 0)
     spent_time = 0
     localStorage.setItem("start_time", Date.now())
@@ -89,6 +93,54 @@ function timer(){
 
 }
 
+/*
+ * displays the modal
+ */
+function showLeaderboardModal(time){
+    time = time_format(time);
+    let modal = document.getElementById("leaderboard-add-modal");
+    let timeDisplay = document.getElementById("leaderboard-add-time");
+    timeDisplay.textContent = time;
+    modal.classList.toggle("hidden", false);
+    //clear any text that may have been in the input
+    document.getElementById("name-leaderboard-input").value = "";
+}
+
+/*
+ * hides the modal
+ */
+function hideLeaderboardModal(){
+    let modal = document.getElementById("leaderboard-add-modal");
+    modal.classList.toggle("hidden", true);
+}
+
+/*
+ * sends POST request to store the time to server-leaderboard
+ */
+function storeLeaderboardData(){
+    let nameInput = document.getElementById("name-leaderboard-input");
+    
+    let info = {
+        time: runTime,
+        timeStr: time_format(runTime),
+        name: nameInput.value
+    };
+    
+    fetch("/new-time", {
+        method: "POST",
+        body: JSON.stringify(info),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (res){
+        if(res.status === 200){
+            console.log("New time sent");
+        }else{
+            alert("Err: An error occured whilst sending new time.");
+        }
+        hideLeaderboardModal();
+    });
+}
 var card_slot = document.getElementsByClassName("card-slot")
     console.log(card_slot)
     console.log("Number of card slots: " + card_slot.length)
