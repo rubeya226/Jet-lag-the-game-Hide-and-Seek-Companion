@@ -138,6 +138,7 @@ function sortTimes(times){
 
 function addNewTime(timeObj){
     let times = JSON.parse(fs.readFileSync(__dirname + "/leaderboard.json"));
+    timeObj.time = parseInt(timeObj.time);
     times.push(timeObj);
     times = sortTimes(times);
     fs.writeFileSync(
