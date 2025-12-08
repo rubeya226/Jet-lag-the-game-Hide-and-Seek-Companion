@@ -64,7 +64,7 @@ function timer_end(){
 window.onload = () => {
     if (start_time && timer_running) {
         timer_interval = setInterval(timer, 1000)
-        spent_time = parseInt(localStorage.getItem("time"))
+        spent_time = parseInt(localStorage.getItem("time")) || 0
     }
     display.textContent = "Hiding Time: "+time_format(parseInt(localStorage.getItem("time")))
 }
@@ -86,6 +86,7 @@ function timer(){
     console.log("time stored in localStorage")
     display.textContent = "Hiding Time: "+time_format(spent_time)
     console.log("time updated to: "+parseInt(localStorage.getItem("time")))
+
 }
 
 var card_slot = document.getElementsByClassName("card-slot")
