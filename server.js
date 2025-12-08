@@ -140,7 +140,10 @@ function addNewTime(timeObj){
     let times = JSON.parse(fs.readFileSync(__dirname + "/leaderboard.json"));
     times.push(timeObj);
     times = sortTimes(times);
-    fs.writeFileSync("/leaderboard.json", JSON.stringify(times, null, 2));
+    fs.writeFileSync(
+        "./leaderboard.json", 
+        JSON.stringify(times, null, 2)
+    );
 }
 
 /*
