@@ -190,7 +190,7 @@ closeCardRemoveModal.addEventListener("click", () => {
     hiddenModal.classList.add("hidden")
 })
 
-function sendCurse(title, type, castingCost, description){
+async function sendCurse(title, type, castingCost, description){
     if(type.toLowerCase() != "curse"){
         alert("Can't curse with a non-curse card.");
     }else{
@@ -199,6 +199,23 @@ function sendCurse(title, type, castingCost, description){
         message += (description + "\n");
         message += ("\n" + castingCost);
         sendMessage("hider", message);
+
+        //copied from remove button event
+        var reqURL = "/hider/remove-card/" + mostRecentCard;
+           
+        await fetch(reqURL, {
+            method: "POST"
+        })
+        
+        // Remove card from UI immediately
+        card_slot[mostRecentCard].remove()
+        window.location.href = "/hider" // Refresh to update card indices
+
+        // Close modal
+        var hiddenModalBackdrop = document.getElementById("modal-backdrop")
+        var hiddenModal = document.getElementById("card-remove-modal")
+        hiddenModalBackdrop.classList.add("hidden")
+        hiddenModal.classList.add("hidden")
     }
 }
 
