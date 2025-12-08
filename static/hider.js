@@ -1,4 +1,4 @@
-
+let mostRecentCard = -1;
 var filePath = "/time.json"
 
 let runTime = 0;
@@ -148,6 +148,7 @@ var card_slot = document.getElementsByClassName("card-slot")
 for (let i = 0; i < card_slot.length; i++) {
     card_slot[i].addEventListener("click", () => {
         console.log("Card #:", i, " clicked")
+        mostRecentCard = i;
         var hiddenModalBackdrop = document.getElementById("modal-backdrop")
         var hiddenModal = document.getElementById("card-remove-modal")
 
@@ -190,7 +191,7 @@ closeCardRemoveModal.addEventListener("click", () => {
 })
 
 function sendCurse(title, type, castingCost, description){
-    if(type != "curse"){
+    if(type.toLowerCase() != "curse"){
         alert("Can't curse with a non-curse card.");
     }else{
         let message = "Cursed!\n";
@@ -220,4 +221,25 @@ function sendMessage(sender, content){
             alert("Err: An error occured whilst sending message");
         }
     });
+}
+
+function getCardInfo(cardIdx){
+    let title = document.getElementsByClassName("card-title")[cardIdx];
+    let cardType = document.getElementsByClassName("card-type")[cardIdx];
+    let castingCost = document.getElementsByClassName("card-casting-cost")[cardIdx];
+    let description = document.getElementsByClassName("card-description")[cardIdx];
+
+    title = title.textContent.trim();
+
+    cardType = cardType.textContent;
+    cardType = cardType.substring(5, cardType.length).trim();
+    
+    castingCost = castingCost.textContent;
+    castingCost = castingCost.substring(14, castingCost.length).trim();
+    
+    description = description.textContent.trim();
+
+    console.log(title, cardType, castingCost, description);
+
+    sendCurse(title, cardType, castingCost, description);
 }
