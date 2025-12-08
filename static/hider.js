@@ -188,3 +188,36 @@ closeCardRemoveModal.addEventListener("click", () => {
     hiddenModalBackdrop.classList.add("hidden")
     hiddenModal.classList.add("hidden")
 })
+
+function sendCurse(title, type, castingCost, description){
+    if(type != "curse"){
+        alert("Can't curse with a non-curse card.");
+    }else{
+        let message = "Cursed!\n";
+        message += (title + "\n");
+        message += (description + "\n");
+        message += ("\n" + castingCost);
+        sendMessage("hider", message);
+    }
+}
+
+function sendMessage(sender, content){
+    let message = {
+        sender: sender,
+        content: content
+    }
+
+    fetch("/new-message",{
+        method: "POST",
+        body: JSON.stringify(message),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (res){
+        if(res.status === 200){
+            console.log("New message sent.");
+        }else{
+            alert("Err: An error occured whilst sending message");
+        }
+    });
+}

@@ -87,12 +87,12 @@ app.get("/rules", function (req, res, next){
  * GET hider page
  */
 app.get("/:hider", function (req, res, next){
-    console.log("== GET /hider");
     let draw = req.params.hider;
 
     console.log("Draw param: " + draw)
 
     if (draw === "hider") {
+        console.log("== GET /hider");
         res.render("frame", {
             title: "Jet Lag Hide & Seek - Hider",
             scriptFile: "hider.js",
@@ -105,6 +105,7 @@ app.get("/:hider", function (req, res, next){
             }
         }) 
     } else if (draw === "hider-draw") {
+        console.log("== GET /hider-draw");
         // If all the cards are drawn, just contiune 
         if(num_of_cards < 6) {
             // Generate a random index for the card
