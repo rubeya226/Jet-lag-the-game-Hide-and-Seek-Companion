@@ -66,6 +66,7 @@ function timer_end(){
 }
 
 window.onload = () => {
+    localStorage.setItem("time", spent_time); 
     if (start_time && timer_running) {
         timer_interval = setInterval(timer, 1000)
         spent_time = parseInt(localStorage.getItem("time")) || 0
