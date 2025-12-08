@@ -34,6 +34,27 @@ function getMessageCount(){
     return mssgs.messages.length;
 }
 
+// Global vars for draw cards
+var cards = JSON.parse(fs.readFileSync(__dirname + "/cards.json")).cards
+var idx_of_cards_drawn = []
+var num_of_cards = 0
+
+// Functions for draw cards:
+function getRandomInt(min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function isCardAlreadyDrawn(idx) {
+    for (let i = 0; i < idx_of_cards_drawn.length; i++) {
+        if(idx == idx_of_cards_drawn[i]){
+            return true
+        }
+    }
+    return false
+}
+
 /*
  * GET home page
  */
@@ -65,15 +86,61 @@ app.get("/rules", function (req, res, next){
 /*
  * GET hider page
  */
-app.get("/hider", function (req, res, next){
+app.get("/:hider", function (req, res, next){
     console.log("== GET /hider");
-    res.render("frame", {
-        title: "Jet Lag Hide & Seek - Hider",
-        scriptFile: "hider.js",
-        loadScript: "",
-        templateFile: "hider",
-        fileInfo: {}
-    })
+    let draw = req.params.hider;
+
+    console.log("Draw param: " + draw)
+
+    if (draw === "hider") {
+        res.render("frame", {
+            title: "Jet Lag Hide & Seek - Hider",
+            scriptFile: "hider.js",
+            loadScript: "",
+            templateFile: "hider",
+            fileInfo: {
+                cards: cards,
+                num_of_cards: num_of_cards,
+                idx_of_cards_drawn: idx_of_cards_drawn,
+            }
+        }) 
+    } else if (draw === "hider-draw") {
+        // If all the cards are drawn, just contiune 
+        if(num_of_cards < 6) {
+            // Generate a random index for the card
+            var idx = getRandomInt(0, cards.length - 1)
+
+            // If num of cards is 0, just add the card
+            if(num_of_cards == 0) {
+                idx_of_cards_drawn.push(idx)
+            } else { // Else, check if card is already drawn
+                while (isCardAlreadyDrawn(idx)) {
+                    idx = getRandomInt(0, cards.length - 1)
+                }
+                idx_of_cards_drawn.push(idx)
+            }
+        }
+
+        // Get the num of cards in hand
+        num_of_cards = idx_of_cards_drawn.length
+        console.log("idx length: " + idx_of_cards_drawn.length)
+        console.log("Num of cards drawn: " + num_of_cards)
+        console.log("Indices of cards drawn: " + idx_of_cards_drawn)
+
+        res.render("frame", {
+            title: "Jet Lag Hide & Seek - Hider",
+            scriptFile: "hider.js",
+            loadScript: "",
+            templateFile: "hider",
+            fileInfo: {
+                cards: cards,
+                num_of_cards: num_of_cards,
+                idx_of_cards_drawn: idx_of_cards_drawn, 
+            }
+        }) 
+    } else {
+        next();
+    }
 });
 
 /*
@@ -233,31 +300,10 @@ app.get("/messages", function (req, res, next){
  */
 
 // .cards so that we get the array inside the JSON object
-var cards = JSON.parse(fs.readFileSync(__dirname + "/cards.json")).cards
-var idx_of_cards_drawn = []
-var num_of_cards = 0
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
-
-function isCardAlreadyDrawn(idx) {
-    for (let i = 0; i < idx_of_cards_drawn.length; i++) {
-        if(idx == idx_of_cards_drawn[i]){
-            return true
-        }
-    }
-    return false
-}
-
 /*
  * Drawing Cards
  */
-
-
-app.get("/hider/draw-card", (req, res) => {
+app.post("/hider/draw-card", (req, res) => {
     console.log("== GET /draw-card");
 
     // If all the cards are drawn, just contiune 
@@ -283,11 +329,17 @@ app.get("/hider/draw-card", (req, res) => {
     console.log("Indices of cards drawn: " + idx_of_cards_drawn)
 
     // Render the card 
-    res.render("cardDraw", {
-        cards: cards,
-        num_of_cards: num_of_cards,
-        idx_of_cards_drawn: idx_of_cards_drawn
-    }) 
+    res.render("frame", {
+        title: "Jet Lag Hide & Seek - Hider",
+        scriptFile: "hider.js",
+        loadScript: "",
+        templateFile: "hider",
+        fileInfo: {
+            cards: cards,
+            num_of_cards: num_of_cards,
+            idx_of_cards_drawn: idx_of_cards_drawn,
+        }
+    })
 });
 
 /*
@@ -298,7 +350,11 @@ app.post("/hider/remove-card/:idx", function(req, res, next){
     console.log("== POST /hider/remove-card/" + idx)
     console.log("idx to remove: ",idx)
 
+    num_of_cards -= 1 
+    console.log("Num of cards after removal: " + num_of_cards)
+
     idx_of_cards_drawn.splice(idx, 1)
+    console.log("Indices of cards after removal: " + idx_of_cards_drawn)
 
     res.status(200).json({ success: true });
 })
